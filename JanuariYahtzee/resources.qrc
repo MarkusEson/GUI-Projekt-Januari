@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/new/pictures">
+        <file>YAHTZEE BACKGROUND TWO.png</file>
+        <file>YAHTZEE BACKGROUND TWO 2.png</file>
+        <file>DMPYZY BACKGROUND.png</file>
+        <file>DMPYZY OPTIONS BACKGROUND.png</file>
+        <file>1dice.png</file>
+        <file>2dice.png</file>
+        <file>3dice.png</file>
+        <file>4dice.png</file>
+        <file>5dice.png</file>
+        <file>6dice.png</file>
+    </qresource>
+</RCC>
