@@ -14,7 +14,6 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     /*
      * En funktion som connectar alla knappar i layouterna Agrid, Bgrid, Cgrid och Dgrid.
      * Funktionen är inspirerad från GUI labbarna samt stackexchange sidan https://stackoverflow.com/questions/4065378/qt-get-children-from-layout
-     *
      */
     for(int i = 0; i < ui->Agrid->count(); i++){
         QWidget *button = ui->Agrid->itemAt(i)->widget();
@@ -42,6 +41,10 @@ YahtzeeMainWin::~YahtzeeMainWin()
 
 void YahtzeeMainWin::optionsButtonClicked()
 {
+    /*
+     * Denna funktion kollar om menuLabel är dold eller ej, om den är det så sätts allt i Layouten till Show();
+     * Om menuLabel inte syns, så sätts allt i layouten till Hide();
+     */
     if(ui->menuLabel->isHidden()){
         for(int i = 0; i < ui->menuLayout->count(); i++){
              QWidget *widg = ui->menuLayout->itemAt(i)->widget();
@@ -120,6 +123,9 @@ void YahtzeeMainWin::displayDiceOnScreen()
     // TO DO
     // generalize and shorten this code.
     // priority - good looking code.
+    // test 17:57
+
+    // vilken del är detta?
 
         if(diceVector[0] == 1)
              ui->dice1Label->setStyleSheet("QWidget {image: url(:/new/pictures/1dice.png) }");
@@ -180,7 +186,6 @@ void YahtzeeMainWin::displayDiceOnScreen()
             ui->dice5Label->setStyleSheet("QWidget {image: url(:/new/pictures/4dice.png) }");
         else if(diceVector[4] == 5)
             ui->dice5Label->setStyleSheet("QWidget {image: url(:/new/pictures/5dice.png) }");
-
 }
 
 
