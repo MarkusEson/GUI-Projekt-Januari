@@ -127,6 +127,9 @@ void YahtzeeMainWin::displayDiceOnScreen()
 
     // vilken del är detta?
 
+    // Detta behåller jag
+
+    // behåll
         if(diceVector[0] == 1)
              ui->dice1Label->setStyleSheet("QWidget {image: url(:/new/pictures/1dice.png) }");
         else if(diceVector[0] == 2)
