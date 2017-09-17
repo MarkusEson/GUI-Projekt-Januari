@@ -125,6 +125,8 @@ void YahtzeeMainWin::displayDiceOnScreen()
     // priority - good looking code.
     // test 17:57
 
+    // vilken del är detta?
+
         if(diceVector[0] == 1)
              ui->dice1Label->setStyleSheet("QWidget {image: url(:/new/pictures/1dice.png) }");
         else if(diceVector[0] == 2)
