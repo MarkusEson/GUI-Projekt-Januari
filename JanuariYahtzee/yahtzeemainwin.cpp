@@ -127,6 +127,7 @@ void YahtzeeMainWin::displayDiceOnScreen()
 
     // vilken del är detta?
 
+    // Detta behåller jag
 
     // behåll
         if(diceVector[0] == 1)
