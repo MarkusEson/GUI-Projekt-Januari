@@ -1,6 +1,7 @@
 #include "yahtzeemainwin.h"
 #include "ui_yahtzeemainwin.h"
 #include <QDebug>
+#include <QAbstractButton>
 #include <unistd.h>
 
 
@@ -14,6 +15,7 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     /*
      * En funktion som connectar alla knappar i layouterna Agrid, Bgrid, Cgrid och Dgrid.
      * Funktionen är inspirerad från GUI labbarna samt stackexchange sidan https://stackoverflow.com/questions/4065378/qt-get-children-from-layout
+     *
      */
     for(int i = 0; i < ui->Agrid->count(); i++){
         QWidget *button = ui->Agrid->itemAt(i)->widget();
@@ -41,10 +43,6 @@ YahtzeeMainWin::~YahtzeeMainWin()
 
 void YahtzeeMainWin::optionsButtonClicked()
 {
-    /*
-     * Denna funktion kollar om menuLabel är dold eller ej, om den är det så sätts allt i Layouten till Show();
-     * Om menuLabel inte syns, så sätts allt i layouten till Hide();
-     */
     if(ui->menuLabel->isHidden()){
         for(int i = 0; i < ui->menuLayout->count(); i++){
              QWidget *widg = ui->menuLayout->itemAt(i)->widget();
@@ -110,72 +108,26 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
 
 }
 
+void YahtzeeMainWin::setDieImage(QLabel * label, int dieValue)
+{
+    // Med inspiration av grupp... mars? april?
+    QString string = "QWidget {image: url(:/new/pictures/" + QString::number(dieValue) + "dice.png) }";
+    label->setStyleSheet(string);
+}
+
 void YahtzeeMainWin::displayDiceOnScreen()
 {
-    diceVector = {2,1,4,5,3};
-    qDebug() << "HEHEHEHEHHE";
+    gameBrain.rollDice();
 
-    /*
-     * lägger in nya tärningsbilder i ui->diceLabel beroende på vad man rollade på tärningen
-     * Koden kommr från DenisKormalev från följande sida - https://forum.qt.io/topic/1378/is-it-possible-to-set-a-background-image-to-a-widget
-    */
+    int * arrayWithDice = gameBrain.getDiceArray();
 
-    // TO DO
-    // generalize and shorten this code.
-    // priority - good looking code.
-    // test 17:57
+    setDieImage(ui->dice1Label, arrayWithDice[0]);
+    setDieImage(ui->dice2Label, arrayWithDice[1]);
+    setDieImage(ui->dice3Label, arrayWithDice[2]);
+    setDieImage(ui->dice4Label, arrayWithDice[3]);
+    setDieImage(ui->dice5Label, arrayWithDice[4]);
 
-    // gitKraken
-
-   // raderade allt dåligt
-
-        if(diceVector[1] == 1)
-            ui->dice2Label->setStyleSheet("QWidget {image: url(:/new/pictures/1dice.png) }");
-        else if(diceVector[1] == 2)
-            ui->dice2Label->setStyleSheet("QWidget {image: url(:/new/pictures/2dice.png) }");
-        else if(diceVector[1] == 3)
-            ui->dice2Label->setStyleSheet("QWidget {image: url(:/new/pictures/3dice.png) }");
-        else if(diceVector[1] == 4)
-            ui->dice2Label->setStyleSheet("QWidget {image: url(:/new/pictures/4dice.png) }");
-        else if(diceVector[1] == 5)
-            ui->dice2Label->setStyleSheet("QWidget {image: url(:/new/pictures/5dice.png) }");
-
-
-
-        if(diceVector[2] == 1)
-            ui->dice3Label->setStyleSheet("QWidget {image: url(:/new/pictures/1dice.png) }");
-        else if(diceVector[2] == 2)
-            ui->dice3Label->setStyleSheet("QWidget {image: url(:/new/pictures/2dice.png) }");
-        else if(diceVector[2] == 3)
-            ui->dice3Label->setStyleSheet("QWidget {image: url(:/new/pictures/3dice.png) }");
-        else if(diceVector[2] == 4)
-            ui->dice3Label->setStyleSheet("QWidget {image: url(:/new/pictures/4dice.png) }");
-        else if(diceVector[2] == 5)
-            ui->dice3Label->setStyleSheet("QWidget {image: url(:/new/pictures/5dice.png) }");
-
-
-        if(diceVector[3] == 1)
-            ui->dice4Label->setStyleSheet("QWidget {image: url(:/new/pictures/1dice.png) }");
-        else if(diceVector[3] == 2)
-            ui->dice4Label->setStyleSheet("QWidget {image: url(:/new/pictures/2dice.png) }");
-        else if(diceVector[3] == 3)
-            ui->dice4Label->setStyleSheet("QWidget {image: url(:/new/pictures/3dice.png) }");
-        else if(diceVector[3] == 4)
-            ui->dice4Label->setStyleSheet("QWidget {image: url(:/new/pictures/4dice.png) }");
-        else if(diceVector[3] == 5)
-            ui->dice4Label->setStyleSheet("QWidget {image: url(:/new/pictures/5dice.png) }");
-
-
-        if(diceVector[4] == 1)
-            ui->dice5Label->setStyleSheet("QWidget {image: url(:/new/pictures/1dice.png) }");
-        else if(diceVector[4] == 2)
-            ui->dice5Label->setStyleSheet("QWidget {image: url(:/new/pictures/2dice.png) }");
-        else if(diceVector[4] == 3)
-            ui->dice5Label->setStyleSheet("QWidget {image: url(:/new/pictures/3dice.png) }");
-        else if(diceVector[4] == 4)
-            ui->dice5Label->setStyleSheet("QWidget {image: url(:/new/pictures/4dice.png) }");
-        else if(diceVector[4] == 5)
-            ui->dice5Label->setStyleSheet("QWidget {image: url(:/new/pictures/5dice.png) }");
+    delete arrayWithDice;
 }
 
 
@@ -230,7 +182,7 @@ void YahtzeeMainWin::on_optionsButton_clicked()
 
 void YahtzeeMainWin::on_rollDiceButton_clicked()
 {
-    //qDebug() << "KLICKADE PÅ KNAPPEN";
+    qDebug() << "KLICKADE PÅ KNAPPEN";
     displayDiceOnScreen();
 }
 

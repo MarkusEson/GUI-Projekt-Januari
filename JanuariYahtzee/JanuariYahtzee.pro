@@ -26,12 +26,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         yahtzeemainwin.cpp \
-    dicebrain.cpp \
     gamebrain.cpp
 
 HEADERS += \
         yahtzeemainwin.h \
-    dicebrain.h \
     gamebrain.h
 
 FORMS += \
