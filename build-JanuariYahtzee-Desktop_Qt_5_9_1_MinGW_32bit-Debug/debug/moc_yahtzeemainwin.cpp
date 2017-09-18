@@ -121,6 +121,8 @@ void *YahtzeeMainWin::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_YahtzeeMainWin.stringdata0))
         return static_cast<void*>(const_cast< YahtzeeMainWin*>(this));
+    if (!strcmp(_clname, "GameBrain"))
+        return static_cast< GameBrain*>(const_cast< YahtzeeMainWin*>(this));
     return QMainWindow::qt_metacast(_clname);
 }
 

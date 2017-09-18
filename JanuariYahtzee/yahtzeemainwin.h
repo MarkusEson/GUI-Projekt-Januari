@@ -10,7 +10,7 @@ namespace Ui {
 class YahtzeeMainWin;
 }
 
-class YahtzeeMainWin : public QMainWindow
+class YahtzeeMainWin : public QMainWindow, GameBrain
 {
     Q_OBJECT
 
