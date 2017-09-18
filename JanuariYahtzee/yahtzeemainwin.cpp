@@ -10,6 +10,10 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::YahtzeeMainWin)
 {
+    //xOfAKind();
+    //oneToSix();
+    //fullHouse();
+    smallLargeStraight();
     ui->setupUi(this);
 
     /*
