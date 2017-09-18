@@ -125,7 +125,6 @@ void YahtzeeMainWin::displayDiceOnScreen()
     // priority - good looking code.
     // test 17:57
 
-    // vilken del är detta?
     // gitKraken
 
     // Detta behåller jag
