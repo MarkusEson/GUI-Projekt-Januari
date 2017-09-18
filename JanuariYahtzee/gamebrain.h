@@ -15,6 +15,10 @@ public:
 
     void rollDice();
     int *getDiceArray();
+    //void oneToSix();
+    void xOfAKind();
+    //void fullHouse();
+    //void smallLargeStraight();
 
 private:
     int diceArray[5];
