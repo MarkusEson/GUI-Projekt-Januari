@@ -10,7 +10,7 @@ GameBrain::GameBrain()
 
 GameBrain::~GameBrain()
 {
-    delete diceArray;
+
 }
 
 void GameBrain::rollDice()
