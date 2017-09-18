@@ -126,6 +126,7 @@ void YahtzeeMainWin::displayDiceOnScreen()
     // test 17:57
 
     // vilken del är detta?
+    // gitKraken
 
     // Detta behåller jag
 
