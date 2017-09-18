@@ -125,22 +125,9 @@ void YahtzeeMainWin::displayDiceOnScreen()
     // priority - good looking code.
     // test 17:57
 
-    // vilken del är detta?
+    // gitKraken
 
-    // Detta behåller jag
-
-    // behåll
-        if(diceVector[0] == 1)
-             ui->dice1Label->setStyleSheet("QWidget {image: url(:/new/pictures/1dice.png) }");
-        else if(diceVector[0] == 2)
-             ui->dice1Label->setStyleSheet("QWidget {image: url(:/new/pictures/2dice.png) }");
-        else if(diceVector[0] == 3)
-             ui->dice1Label->setStyleSheet("QWidget {image: url(:/new/pictures/3dice.png) }");
-        else if(diceVector[0] == 4)
-             ui->dice1Label->setStyleSheet("QWidget {image: url(:/new/pictures/4dice.png) }");
-        else if(diceVector[0] == 5)
-             ui->dice1Label->setStyleSheet("QWidget {image: url(:/new/pictures/5dice.png) }");
-
+   // raderade allt dåligt
 
         if(diceVector[1] == 1)
             ui->dice2Label->setStyleSheet("QWidget {image: url(:/new/pictures/1dice.png) }");
