@@ -7,5 +7,7 @@ int main(int argc, char *argv[])
     YahtzeeMainWin w;
     w.show();
 
+    srand(time(NULL));
+
     return a.exec();
 }
