@@ -18,6 +18,9 @@ public:
 
 private:
     int diceArray[5];
+    int throwValue [5] = {1,1,1,1,5};
+    int sum = 0;
+    int dieSort = 3;
 };
 
 #endif // GAMEBRAIN_H
