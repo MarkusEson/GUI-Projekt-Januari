@@ -21,6 +21,10 @@ public:
     void fullHouse();
     void smallLargeStraight();
 
+    QString getScoreFromArray();
+    QString calculateScoreBoard(int _activePlayer, int sumBonusOrTotal);
+
+
 private:
     int diceArray[5];
     int throwValue [5] = {2,3,4,5,6};           //testvariabler för funktionerna
@@ -28,6 +32,9 @@ private:
     int sum = 0;
     int dieSort = 3;
     int smallLarge = 2;
+
+
+    int _scoreArray[20][4];
 
 
 };

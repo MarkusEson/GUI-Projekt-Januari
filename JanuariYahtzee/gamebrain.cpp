@@ -33,7 +33,8 @@ int * GameBrain::getDiceArray() // Returns copy of array
     return pointerToDiceArrayCopy;
 }
 
-void GameBrain::xOfAKind(){
+void GameBrain::xOfAKind()
+{
 
 
     for(int j=1; j<6; j++){
@@ -55,7 +56,8 @@ void GameBrain::xOfAKind(){
       qDebug() << "ahh";
 }
 
-void GameBrain::oneToSix(){
+void GameBrain::oneToSix()
+{
 
       for( int i = 0; i < 5; i++ )
       {
@@ -70,7 +72,8 @@ void GameBrain::oneToSix(){
 
 
 
-void GameBrain::fullHouse(){
+void GameBrain::fullHouse()
+{
 
  if( (((throwValue[0] == throwValue[1]) && (throwValue[1] == throwValue[2])) && // Three of a Kind
  (throwValue[3] == throwValue[4]) && // Two of a Kind
@@ -81,10 +84,11 @@ void GameBrain::fullHouse(){
      sum = throwValue[0]+throwValue[1]+throwValue[2]+throwValue[3]+throwValue[4];
  }
 
-qDebug() << sum;
+    qDebug() << sum;
 }
 
-void GameBrain::smallLargeStraight(){
+void GameBrain::smallLargeStraight()
+{
 
 int firstStraight = 1;
 if (smallLarge == 2){firstStraight ++;}
@@ -105,3 +109,50 @@ if( ((throwValue[0] == firstStraight) &&
 }
 qDebug() << sum;
 }
+
+QString GameBrain::getScoreFromArray()
+{
+    //QString numToPrint = QString::number();
+}
+
+QString GameBrain::calculateScoreBoard(int _activePlayer, int sumBonusOrTotal)
+{
+    _scoreArray[0][0] = 5;
+    _scoreArray[1][0] = 5;
+    _scoreArray[2][0] = 2;
+    _scoreArray[3][0] = 20;
+    _scoreArray[4][0] = 20;
+    _scoreArray[5][0] = 20;
+    /*
+     * A function that takes the active player, and on click sums all the players currents points and returns these to be displayed.
+     * Calculates the Sum, Bonus, and Total scores.
+     */
+    int score = 0;
+    switch(sumBonusOrTotal){
+        case 0:{
+            for(int i = 0; i < 6; i++)
+                score += _scoreArray[i][_activePlayer];
+            _scoreArray[6][_activePlayer] = score;
+            break;
+        }
+        case 1:{
+            if(_scoreArray[6][_activePlayer] >= 63)
+                _scoreArray[7][_activePlayer] = 35;
+            else
+                _scoreArray[7][_activePlayer] = 0;
+
+            score = _scoreArray[7][_activePlayer];
+            break;
+        }
+        case 2:{
+            for(int i = 6; i < 20; i++)
+                score += _scoreArray[i][_activePlayer];
+            break;
+        }
+    }
+
+    QString scoreToReturn = QString::number(score);
+    return scoreToReturn;
+}
+
+
