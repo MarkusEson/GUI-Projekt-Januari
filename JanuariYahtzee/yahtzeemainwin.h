@@ -2,13 +2,15 @@
 #define YAHTZEEMAINWIN_H
 
 #include <QMainWindow>
-#include <vector>
+#include <QLabel>
+
+#include "gamebrain.h"
 
 namespace Ui {
 class YahtzeeMainWin;
 }
 
-class YahtzeeMainWin : public QMainWindow
+class YahtzeeMainWin : public QMainWindow, GameBrain
 {
     Q_OBJECT
 
@@ -18,13 +20,16 @@ public:
     void optionsButtonClicked();
     void showPlayerBlockersOnClick();
     void chooseAmountOfPlayers(int numOfPlayers);
+    void setDieImage(QLabel * label, int dieValue);
     void displayDiceOnScreen();
+    void calculateScoreOnGameBoard();
 
 
 private:
     Ui::YahtzeeMainWin *ui;
     int _numOfPlayers = 0;
-    std::vector<int> diceVector;
+    GameBrain gameBrain;
+    int _scoreArray[20][4];
 
 private slots:
     void aButtonWasClicked();

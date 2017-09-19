@@ -39,10 +39,10 @@
    <widget class="QWidget" name="gridLayoutWidget_4">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>40</y>
-      <width>71</width>
-      <height>601</height>
+      <x>151</x>
+      <y>41</y>
+      <width>70</width>
+      <height>599</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="Agrid">
@@ -188,7 +188,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>1</string>
        </property>
        <property name="checkable">
         <bool>false</bool>
@@ -359,7 +359,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>3</string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -502,7 +502,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>2</string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -561,7 +561,7 @@
         </size>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>5</string>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -601,10 +601,10 @@
    <widget class="QWidget" name="gridLayoutWidget_5">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>40</y>
-      <width>71</width>
-      <height>601</height>
+      <x>221</x>
+      <y>41</y>
+      <width>70</width>
+      <height>599</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="Bgrid">
@@ -1160,10 +1160,10 @@
    <widget class="QWidget" name="gridLayoutWidget_6">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>40</y>
-      <width>71</width>
-      <height>601</height>
+      <x>291</x>
+      <y>41</y>
+      <width>70</width>
+      <height>599</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="Cgrid">
@@ -1719,10 +1719,10 @@
    <widget class="QWidget" name="gridLayoutWidget_7">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>40</y>
-      <width>71</width>
-      <height>601</height>
+      <x>361</x>
+      <y>41</y>
+      <width>69</width>
+      <height>599</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="Dgrid">
@@ -2434,8 +2434,8 @@ border-bottom-right-radius: 20;</string>
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>10</y>
-      <width>121</width>
+      <y>590</y>
+      <width>131</width>
       <height>32</height>
      </rect>
     </property>
@@ -2452,10 +2452,10 @@ border-bottom-right-radius: 20;</string>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>482</x>
-      <y>70</y>
-      <width>121</width>
-      <height>541</height>
+      <x>462</x>
+      <y>60</y>
+      <width>161</width>
+      <height>511</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="diceLayout">
@@ -2527,8 +2527,8 @@ border-bottom-right-radius: 20;</string>
     <zorder>dice2Label</zorder>
     <zorder>dice1Label</zorder>
    </widget>
-   <zorder>layoutWidget</zorder>
    <zorder>gameBackground</zorder>
+   <zorder>layoutWidget</zorder>
    <zorder>optionsBackground</zorder>
    <zorder>gridLayoutWidget_4</zorder>
    <zorder>gridLayoutWidget_5</zorder>
