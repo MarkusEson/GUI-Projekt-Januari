@@ -137,34 +137,11 @@ void YahtzeeMainWin::displayDiceOnScreen()
     delete arrayWithDice;
 }
 
-void YahtzeeMainWin::calculateScoreOnGameBoard()
-{
-    /*
-     * En funktion som anropas varje gång någon spelare klickar på poängbrädet
-     * Räknar ihop spelarens totala mängd poäng och visar denna i Total, och Bonus.
-     */
-
-    for(int i = 0; i < 4; i++){
-
-        for(int b = 0; b < 20; b++){
-
-
-        }
-    }
-
-
-
-
-
-
-}
-
-
-
 
 void YahtzeeMainWin::aButtonWasClicked()
 {
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
+
     // QAbstractButton *theDiceClicked = dynamic_cast<QAbstractButton*>(sender());
     /*
     theButton->setText("hej");
@@ -184,9 +161,14 @@ void YahtzeeMainWin::aButtonWasClicked()
      * En funktion som anropas varje gång någon spelare klickar på poängbrädet
      * Räknar ihop spelarens totala mängd poäng och visar denna i Total, och Bonus.
      */
-
     if(theButton){
-        calculateScoreOnGameBoard();
+        dynamic_cast<QPushButton*>(sender())->setText("12");
+
+
+            ui->A7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
+            ui->A8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
+            ui->A19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
+
     }
 }
 
