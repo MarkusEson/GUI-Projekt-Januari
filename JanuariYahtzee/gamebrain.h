@@ -23,14 +23,13 @@ public:
 
 private:
     int diceArray[5];
-
-
-
     int throwValue [5] = {2,3,4,5,6};           //testvariabler för funktionerna
     int dieValue = 4;
     int sum = 0;
     int dieSort = 3;
     int smallLarge = 2;
+
+
 };
 
 #endif // GAMEBRAIN_H

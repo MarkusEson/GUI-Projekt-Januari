@@ -3,6 +3,8 @@
 #include <QDebug>
 #include <QAbstractButton>
 #include <unistd.h>
+#include <cstdlib>
+#include <QString>
 
 
 
@@ -21,6 +23,7 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
      * Funktionen är inspirerad från GUI labbarna samt stackexchange sidan https://stackoverflow.com/questions/4065378/qt-get-children-from-layout
      *
      */
+
     for(int i = 0; i < ui->Agrid->count(); i++){
         QWidget *button = ui->Agrid->itemAt(i)->widget();
         connect(button, SIGNAL(clicked()), this, SLOT(aButtonWasClicked()));
@@ -134,18 +137,41 @@ void YahtzeeMainWin::displayDiceOnScreen()
     delete arrayWithDice;
 }
 
+void YahtzeeMainWin::calculateScoreOnGameBoard()
+{
+    /*
+     * En funktion som anropas varje gång någon spelare klickar på poängbrädet
+     * Räknar ihop spelarens totala mängd poäng och visar denna i Total, och Bonus.
+     */
+
+    for(int i = 0; i < 4; i++){
+
+        for(int b = 0; b < 20; b++){
+
+
+        }
+    }
+
+
+
+
+
+
+}
+
+
 
 
 void YahtzeeMainWin::aButtonWasClicked()
 {
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
-
-    //qDebug() << "FUNKTIONENENENENN";
-
+    // QAbstractButton *theDiceClicked = dynamic_cast<QAbstractButton*>(sender());
+    /*
     theButton->setText("hej");
     theButton->setEnabled(false);
 
     ui->A7->setText("sum");
+    */
 
     /*
     if(theButton == ui->A1)
@@ -153,6 +179,15 @@ void YahtzeeMainWin::aButtonWasClicked()
         ui->A1->setChecked(true);
     }
     */
+
+    /*
+     * En funktion som anropas varje gång någon spelare klickar på poängbrädet
+     * Räknar ihop spelarens totala mängd poäng och visar denna i Total, och Bonus.
+     */
+
+    if(theButton){
+        calculateScoreOnGameBoard();
+    }
 }
 
 void YahtzeeMainWin::on_onePlayerButton_clicked()
@@ -186,7 +221,6 @@ void YahtzeeMainWin::on_optionsButton_clicked()
 
 void YahtzeeMainWin::on_rollDiceButton_clicked()
 {
-    qDebug() << "KLICKADE PÅ KNAPPEN";
     displayDiceOnScreen();
 }
 

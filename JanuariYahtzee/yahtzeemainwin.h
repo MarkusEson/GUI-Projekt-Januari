@@ -22,11 +22,14 @@ public:
     void chooseAmountOfPlayers(int numOfPlayers);
     void setDieImage(QLabel * label, int dieValue);
     void displayDiceOnScreen();
+    void calculateScoreOnGameBoard();
+
 
 private:
     Ui::YahtzeeMainWin *ui;
     int _numOfPlayers = 0;
     GameBrain gameBrain;
+    int _scoreArray[20][4];
 
 private slots:
     void aButtonWasClicked();
@@ -36,6 +39,7 @@ private slots:
     void on_fourPlayerButton_clicked();
     void on_optionsButton_clicked();
     void on_rollDiceButton_clicked();
+
 };
 
 #endif // YAHTZEEMAINWIN_H
