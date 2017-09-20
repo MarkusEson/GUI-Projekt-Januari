@@ -112,6 +112,20 @@ QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
     _scoreArray[3][1] = 20;
     _scoreArray[4][1] = 20;
     _scoreArray[5][1] = 20;
+
+    _scoreArray[0][2] = 5;
+    _scoreArray[1][2] = 5;
+    _scoreArray[2][2] = 2;
+    _scoreArray[3][2] = 20;
+    _scoreArray[4][2] = 30;
+    _scoreArray[5][2] = 30;
+
+    _scoreArray[0][3] = 5;
+    _scoreArray[1][3] = 5;
+    _scoreArray[2][3] = 2;
+    _scoreArray[3][3] = 10;
+    _scoreArray[4][3] = 0;
+    _scoreArray[5][3] = 1;
     /*
      * A function that takes the active player, and on click sums all the players currents points and returns these to be displayed.
      * Calculates the Sum, Bonus, and Total scores.

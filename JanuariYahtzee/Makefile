@@ -735,6 +735,8 @@ moc_yahtzeemainwin.cpp: ../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Heade
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QLabel \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		gamebrain.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
@@ -769,6 +771,8 @@ main.o: main.cpp yahtzeemainwin.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QLabel \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		gamebrain.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
@@ -781,6 +785,8 @@ yahtzeemainwin.o: yahtzeemainwin.cpp yahtzeemainwin.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QLabel \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		gamebrain.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \

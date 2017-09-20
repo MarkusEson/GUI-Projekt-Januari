@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_YahtzeeMainWin_t {
     QByteArrayData data[10];
-    char stringdata0[212];
+    char stringdata0[219];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,21 +35,21 @@ QT_MOC_LITERAL(0, 0, 14), // "YahtzeeMainWin"
 QT_MOC_LITERAL(1, 15, 17), // "aButtonWasClicked"
 QT_MOC_LITERAL(2, 33, 0), // ""
 QT_MOC_LITERAL(3, 34, 15), // "aDiceWasClicked"
-QT_MOC_LITERAL(4, 50, 26), // "on_onePlayerButton_clicked"
-QT_MOC_LITERAL(5, 77, 26), // "on_twoPlayerButton_clicked"
-QT_MOC_LITERAL(6, 104, 28), // "on_threePlayerButton_clicked"
-QT_MOC_LITERAL(7, 133, 27), // "on_fourPlayerButton_clicked"
-QT_MOC_LITERAL(8, 161, 24), // "on_optionsButton_clicked"
-QT_MOC_LITERAL(9, 186, 25) // "on_rollDiceButton_clicked"
+QT_MOC_LITERAL(4, 50, 25), // "on_rollDiceButton_clicked"
+QT_MOC_LITERAL(5, 76, 30), // "on_threePlayerButton_triggered"
+QT_MOC_LITERAL(6, 107, 28), // "on_onePlayerButton_triggered"
+QT_MOC_LITERAL(7, 136, 28), // "on_twoPlayerButton_triggered"
+QT_MOC_LITERAL(8, 165, 29), // "on_fourPlayerButton_triggered"
+QT_MOC_LITERAL(9, 195, 23) // "on_quitButton_triggered"
 
     },
     "YahtzeeMainWin\0aButtonWasClicked\0\0"
-    "aDiceWasClicked\0on_onePlayerButton_clicked\0"
-    "on_twoPlayerButton_clicked\0"
-    "on_threePlayerButton_clicked\0"
-    "on_fourPlayerButton_clicked\0"
-    "on_optionsButton_clicked\0"
-    "on_rollDiceButton_clicked"
+    "aDiceWasClicked\0on_rollDiceButton_clicked\0"
+    "on_threePlayerButton_triggered\0"
+    "on_onePlayerButton_triggered\0"
+    "on_twoPlayerButton_triggered\0"
+    "on_fourPlayerButton_triggered\0"
+    "on_quitButton_triggered"
 };
 #undef QT_MOC_LITERAL
 
@@ -97,12 +97,12 @@ void YahtzeeMainWin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         switch (_id) {
         case 0: _t->aButtonWasClicked(); break;
         case 1: _t->aDiceWasClicked(); break;
-        case 2: _t->on_onePlayerButton_clicked(); break;
-        case 3: _t->on_twoPlayerButton_clicked(); break;
-        case 4: _t->on_threePlayerButton_clicked(); break;
-        case 5: _t->on_fourPlayerButton_clicked(); break;
-        case 6: _t->on_optionsButton_clicked(); break;
-        case 7: _t->on_rollDiceButton_clicked(); break;
+        case 2: _t->on_rollDiceButton_clicked(); break;
+        case 3: _t->on_threePlayerButton_triggered(); break;
+        case 4: _t->on_onePlayerButton_triggered(); break;
+        case 5: _t->on_twoPlayerButton_triggered(); break;
+        case 6: _t->on_fourPlayerButton_triggered(); break;
+        case 7: _t->on_quitButton_triggered(); break;
         default: ;
         }
     }
