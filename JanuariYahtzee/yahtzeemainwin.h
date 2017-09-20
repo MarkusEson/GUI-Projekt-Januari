@@ -29,6 +29,7 @@ private:
     Ui::YahtzeeMainWin *ui;
     int _numOfPlayers = 0;
     int _activePlayer = 0;
+    int _timesRolled = 0;
     GameBrain gameBrain;
 
 

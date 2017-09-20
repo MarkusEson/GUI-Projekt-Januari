@@ -35,8 +35,6 @@ private:
 
 
     int _scoreArray[20][4];
-
-
 };
 
 #endif // GAMEBRAIN_H

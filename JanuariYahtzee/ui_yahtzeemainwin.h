@@ -157,7 +157,7 @@ public:
         gameBackground->setStyleSheet(QStringLiteral("background-image: url(:/new/pictures/DMPYZY BACKGROUND.png);"));
         gridLayoutWidget_4 = new QWidget(centralWidget);
         gridLayoutWidget_4->setObjectName(QStringLiteral("gridLayoutWidget_4"));
-        gridLayoutWidget_4->setGeometry(QRect(151, 41, 70, 599));
+        gridLayoutWidget_4->setGeometry(QRect(150, 40, 71, 601));
         Agrid = new QGridLayout(gridLayoutWidget_4);
         Agrid->setSpacing(0);
         Agrid->setContentsMargins(11, 11, 11, 11);
@@ -363,7 +363,7 @@ public:
 
         gridLayoutWidget_5 = new QWidget(centralWidget);
         gridLayoutWidget_5->setObjectName(QStringLiteral("gridLayoutWidget_5"));
-        gridLayoutWidget_5->setGeometry(QRect(221, 41, 70, 599));
+        gridLayoutWidget_5->setGeometry(QRect(220, 40, 71, 601));
         Bgrid = new QGridLayout(gridLayoutWidget_5);
         Bgrid->setSpacing(0);
         Bgrid->setContentsMargins(11, 11, 11, 11);
@@ -565,7 +565,7 @@ public:
 
         gridLayoutWidget_6 = new QWidget(centralWidget);
         gridLayoutWidget_6->setObjectName(QStringLiteral("gridLayoutWidget_6"));
-        gridLayoutWidget_6->setGeometry(QRect(291, 41, 70, 599));
+        gridLayoutWidget_6->setGeometry(QRect(290, 40, 71, 601));
         Cgrid = new QGridLayout(gridLayoutWidget_6);
         Cgrid->setSpacing(0);
         Cgrid->setContentsMargins(11, 11, 11, 11);
@@ -767,7 +767,7 @@ public:
 
         gridLayoutWidget_7 = new QWidget(centralWidget);
         gridLayoutWidget_7->setObjectName(QStringLiteral("gridLayoutWidget_7"));
-        gridLayoutWidget_7->setGeometry(QRect(361, 41, 69, 599));
+        gridLayoutWidget_7->setGeometry(QRect(360, 40, 71, 601));
         Dgrid = new QGridLayout(gridLayoutWidget_7);
         Dgrid->setSpacing(0);
         Dgrid->setContentsMargins(11, 11, 11, 11);
@@ -1049,7 +1049,7 @@ public:
         rollDiceButton->setFlat(false);
         layoutWidget1 = new QWidget(centralWidget);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(462, 60, 161, 511));
+        layoutWidget1->setGeometry(QRect(462, 60, 161, 521));
         diceLayout = new QVBoxLayout(layoutWidget1);
         diceLayout->setSpacing(-1);
         diceLayout->setContentsMargins(11, 11, 11, 11);
