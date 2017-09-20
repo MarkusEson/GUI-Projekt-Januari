@@ -2337,7 +2337,7 @@ border-bottom-right-radius: 20;</string>
       <x>435</x>
       <y>36</y>
       <width>211</width>
-      <height>611</height>
+      <height>601</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -2369,7 +2369,7 @@ border-bottom-right-radius: 20;</string>
       <x>460</x>
       <y>65</y>
       <width>161</width>
-      <height>171</height>
+      <height>314</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="menuLayout">
@@ -2426,6 +2426,11 @@ border-bottom-right-radius: 20;</string>
       </widget>
      </item>
     </layout>
+    <zorder>onePlayerButton</zorder>
+    <zorder>threePlayerButton</zorder>
+    <zorder>fourPlayerButton</zorder>
+    <zorder>menuLabel</zorder>
+    <zorder>twoPlayerButton</zorder>
    </widget>
    <widget class="QPushButton" name="rollDiceButton">
     <property name="enabled">
@@ -2449,87 +2454,118 @@ border-bottom-right-radius: 20;</string>
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>490</x>
       <y>60</y>
-      <width>171</width>
+      <width>111</width>
       <height>521</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="diceLayout">
-     <property name="spacing">
-      <number>-1</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="dice1Label">
+    <layout class="QGridLayout" name="diceButtonLayout">
+     <item row="2" column="0">
+      <widget class="QPushButton" name="pushButton_5">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="styleSheet">
-        <string notr="true">image: url(:/new/pictures/6dice.png);</string>
+        <string notr="true">border-image: url(:/new/pictures/1dice.png);</string>
        </property>
        <property name="text">
-        <string/>
+        <string>PushButton</string>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="dice2Label">
-       <property name="enabled">
-        <bool>true</bool>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
        <property name="styleSheet">
-        <string notr="true">image: url(:/new/pictures/6dice.png);
-</string>
+        <string notr="true">border-image: url(:/new/pictures/2dice.png);</string>
        </property>
        <property name="text">
-        <string/>
+        <string>PushButton</string>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="dice3Label">
-       <property name="styleSheet">
-        <string notr="true">image: url(:/new/pictures/6dice.png);
-</string>
+     <item row="4" column="0">
+      <widget class="QPushButton" name="pushButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
-       <property name="lineWidth">
-        <number>1</number>
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/new/pictures/3dice.png);</string>
        </property>
        <property name="text">
-        <string/>
+        <string>PushButton</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="dice4Label">
+     <item row="3" column="0">
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="styleSheet">
-        <string notr="true">image: url(:/new/pictures/6dice.png);</string>
+        <string notr="true">border-image: url(:/new/pictures/4dice.png);</string>
        </property>
        <property name="text">
-        <string/>
+        <string>PushButton</string>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="dice5Label">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="styleSheet">
-        <string notr="true">image: url(:/new/pictures/6dice.png);</string>
+        <string notr="true">border-image: url(:/new/pictures/4dice.png);</string>
        </property>
        <property name="text">
-        <string/>
+        <string>PushButton</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
     </layout>
-    <zorder>dice3Label</zorder>
-    <zorder>dice4Label</zorder>
-    <zorder>dice5Label</zorder>
-    <zorder>dice2Label</zorder>
-    <zorder>dice1Label</zorder>
+    <zorder>pushButton_5</zorder>
+    <zorder>pushButton</zorder>
+    <zorder>pushButton_3</zorder>
+    <zorder>pushButton_4</zorder>
+    <zorder>pushButton_2</zorder>
    </widget>
+   <zorder>optionsBackground</zorder>
    <zorder>gameBackground</zorder>
    <zorder>layoutWidget</zorder>
-   <zorder>optionsBackground</zorder>
    <zorder>gridLayoutWidget_4</zorder>
    <zorder>gridLayoutWidget_5</zorder>
    <zorder>gridLayoutWidget_6</zorder>
@@ -2539,8 +2575,8 @@ border-bottom-right-radius: 20;</string>
    <zorder>playerBlockerC</zorder>
    <zorder>playerBlockerD</zorder>
    <zorder>optionsButton</zorder>
-   <zorder>layoutWidget</zorder>
    <zorder>rollDiceButton</zorder>
+   <zorder>verticalLayoutWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

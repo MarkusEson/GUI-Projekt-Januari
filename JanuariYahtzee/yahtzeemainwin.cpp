@@ -35,16 +35,19 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         QWidget *button = ui->Dgrid->itemAt(i)->widget();
         connect(button, SIGNAL(clicked()), this, SLOT(aButtonWasClicked()));
     }
-    for(int i = 0; i < ui->diceLayout->count(); i++){
-        QWidget *button = ui->diceLayout->itemAt(i)->widget();
+    for(int i = 0; i < ui->diceButtonLayout->count(); i++){
+        QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
         connect(button, SIGNAL(clicked()), this, SLOT(aButtonWasClicked()));
     }
+
+
 }
 
 YahtzeeMainWin::~YahtzeeMainWin()
 {
     delete ui;
 }
+
 
 void YahtzeeMainWin::optionsButtonClicked()
 {
@@ -131,6 +134,7 @@ void YahtzeeMainWin::displayDiceOnScreen()
     setDieImage(ui->dice4Label, arrayWithDice[3]);
     setDieImage(ui->dice5Label, arrayWithDice[4]);
     delete arrayWithDice;
+
 }
 
 
@@ -153,6 +157,9 @@ void YahtzeeMainWin::aButtonWasClicked()
     }
     */
 
+    if(theButton == ui->pushButton)
+        qDebug() << "hej tärning";
+
     /*
      * This function gets called every time a player clicks the scoreboard.
      * Adds the players sum, Bonus, and total scores to the board.
@@ -160,8 +167,8 @@ void YahtzeeMainWin::aButtonWasClicked()
      * Inspired and copied from Ragnar Nohre - Lab 5
      */
     if(theButton){
-        dynamic_cast<QPushButton*>(sender())->setText("12");
-        dynamic_cast<QPushButton*>(sender())->setEnabled(false);
+        //dynamic_cast<QPushButton*>(sender())->setText("12");
+        //dynamic_cast<QPushButton*>(sender())->setEnabled(false);
 
             ui->A7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));  // 0 = sum of first scores
             ui->A8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));  // 1 = bonus score if sum >= 64
@@ -203,7 +210,6 @@ void YahtzeeMainWin::on_rollDiceButton_clicked()
     if(_timesRolled < 3)
         displayDiceOnScreen();
     _timesRolled++;
-    qDebug() << _timesRolled << endl;
 }
 
 
