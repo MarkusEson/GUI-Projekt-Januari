@@ -991,7 +991,7 @@ public:
         optionsButton->setGeometry(QRect(610, 10, 31, 22));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(147, 4, 331, 41));
+        layoutWidget->setGeometry(QRect(147, 4, 331, 33));
         menuLayout = new QHBoxLayout(layoutWidget);
         menuLayout->setSpacing(0);
         menuLayout->setContentsMargins(11, 11, 11, 11);

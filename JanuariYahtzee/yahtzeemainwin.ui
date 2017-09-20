@@ -2350,7 +2350,7 @@ border-bottom-right-radius: 20;</string>
       <x>147</x>
       <y>4</y>
       <width>331</width>
-      <height>41</height>
+      <height>33</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="menuLayout">

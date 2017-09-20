@@ -13,13 +13,6 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     ui(new Ui::YahtzeeMainWin)
 {
     ui->setupUi(this);
-    /*
-    ui->dice1Button->hide();
-    ui->dice2Button->hide();
-    ui->dice3Button->hide();
-    ui->dice4Button->hide();
-    ui->dice5Button->hide();
-    */
 
     /*
      * A function that connects all the buttons in the grids A,B,C, and D.
@@ -46,6 +39,8 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
         connect(button, SIGNAL(clicked()), this, SLOT(aDiceWasClicked()));
     }
+
+
 
 
 }
@@ -82,43 +77,12 @@ void YahtzeeMainWin::showPlayerBlockersOnClick()
     ui->playerBlockerD->show();
 }
 
-void YahtzeeMainWin::chooseAmountOfPlayers(int num)
+void YahtzeeMainWin::chooseAmountOfPlayers()
 {
-    switch(num)
-    {
-    case 1:{
-        // First turns on the player blocker windows, then hides them according to how many players are playing.
-        showPlayerBlockersOnClick();
-        optionsButtonClicked();
-        ui->playerBlockerA->hide();
-        break;
-    }
-    case 2:{
-        showPlayerBlockersOnClick();
-        optionsButtonClicked();
-        ui->playerBlockerA->hide();
-        ui->playerBlockerB->hide();
-        break;
-    }
-    case 3:{
-        showPlayerBlockersOnClick();
-        optionsButtonClicked();
-        ui->playerBlockerA->hide();
-        ui->playerBlockerB->hide();
-        ui->playerBlockerC->hide();
-        break;
-    }
-    case 4:{
-        showPlayerBlockersOnClick();
-        optionsButtonClicked();
-        ui->playerBlockerA->hide();
-        ui->playerBlockerB->hide();
-        ui->playerBlockerC->hide();
-        ui->playerBlockerD->hide();
-        break;
-    }
-    }
-
+    // First turns on the player blocker windows, then hides them according to how many players are playing.
+    showPlayerBlockersOnClick();
+    optionsButtonClicked();
+    ui->playerBlockerA->hide();
 }
 
 void YahtzeeMainWin::setDieImage(QPushButton * button, int dieValue)
@@ -144,29 +108,91 @@ void YahtzeeMainWin::displayDiceOnScreen()
 
 void YahtzeeMainWin::playerTurn(int numplayers)
 {
+    _timesRolled = 0;                           // resets _timesRolled, so next player can now roll again.
+    ui->rollDiceButton->setEnabled(true);       // sets the rollDice button to enabled, so it can be clicked.
+
+    // If there are one player playing do this:
     if(numplayers == 1){
-        _activePlayer = 1;
+        _activePlayer = PLAYERONE;
     }
 
+    // If there are two players Playing do this:
     if(numplayers == 2){
         _activePlayer++;
         if(_activePlayer == 3)
-            _activePlayer = 1;
+            _activePlayer = PLAYERONE;
+
+
+        if(_activePlayer == PLAYERONE){
+            ui->playerBlockerA->hide();
+            ui->playerBlockerB->show();
+        }
+        else{
+            ui->playerBlockerA->show();
+            ui->playerBlockerB->hide();
+        }
     }
 
+    // If there are three players playing do this:
     if(numplayers == 3){
         _activePlayer++;
         if(_activePlayer == 4)
-            _activePlayer = 1;
+            _activePlayer = PLAYERONE;
+
+        if(_activePlayer == PLAYERONE){
+            ui->playerBlockerA->hide();
+            ui->playerBlockerB->show();
+            ui->playerBlockerC->show();
+        }
+        else if(_activePlayer == PLAYERTWO){
+            ui->playerBlockerA->show();
+            ui->playerBlockerB->hide();
+            ui->playerBlockerC->show();
+        }
+        else{
+            ui->playerBlockerA->show();
+            ui->playerBlockerB->show();
+            ui->playerBlockerC->hide();
+        }
     }
 
+    // If there are four players playing do this:
     if(numplayers == 4){
         _activePlayer++;
         if(_activePlayer == 5)
-            _activePlayer = 1;
+            _activePlayer = PLAYERONE;
+
+        if(_activePlayer == PLAYERONE){
+            ui->playerBlockerA->hide();
+            ui->playerBlockerB->show();
+            ui->playerBlockerC->show();
+            ui->playerBlockerD->show();
+        }
+        else if(_activePlayer == PLAYERTWO){
+            ui->playerBlockerA->show();
+            ui->playerBlockerB->hide();
+            ui->playerBlockerC->show();
+            ui->playerBlockerD->show();
+        }
+        else if(_activePlayer == PLAYERTHREE){
+            ui->playerBlockerA->show();
+            ui->playerBlockerB->show();
+            ui->playerBlockerC->hide();
+            ui->playerBlockerD->show();
+        }
+        else{
+            ui->playerBlockerA->show();
+            ui->playerBlockerB->show();
+            ui->playerBlockerC->show();
+            ui->playerBlockerD->hide();
+        }
     }
+
+
     qDebug() << _activePlayer << endl;
 }
+
+
 
 
 void YahtzeeMainWin::aButtonWasClicked()
@@ -184,25 +210,25 @@ void YahtzeeMainWin::aButtonWasClicked()
         //dynamic_cast<QPushButton*>(sender())->setText("12");
         //dynamic_cast<QPushButton*>(sender())->setEnabled(false);
 
-        if(_activePlayer == 1){
-            ui->A7->setText(GameBrain::calculateScoreBoard(0, 0));  // 0 = sum of first scores
-            ui->A8->setText(GameBrain::calculateScoreBoard(0, 1));  // 1 = bonus score if sum >= 64
-            ui->A19->setText(GameBrain::calculateScoreBoard(0, 2)); // 2 = total score
+        if(_activePlayer == PLAYERONE){
+            ui->A7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));  // calculateScoreBoard(<the players index in _scoreArray>, <the scoreIndexer>)
+            ui->A8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));  // score indexer = 1: score, 2: bonus, 3: Total Score
+            ui->A19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
         }
-        if(_activePlayer == 2){
-            ui->B7->setText(GameBrain::calculateScoreBoard(1, 0));  // 0 = sum of first scores
-            ui->B8->setText(GameBrain::calculateScoreBoard(1, 1));  // 1 = bonus score if sum >= 64
-            ui->B19->setText(GameBrain::calculateScoreBoard(1, 2)); // 2 = total score
+        if(_activePlayer == PLAYERTWO){
+            ui->B7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
+            ui->B8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
+            ui->B19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
         }
-        if(_activePlayer == 3){
-            ui->C7->setText(GameBrain::calculateScoreBoard(2, 0));  // 0 = sum of first scores
-            ui->C8->setText(GameBrain::calculateScoreBoard(2, 1));  // 1 = bonus score if sum >= 64
-            ui->C19->setText(GameBrain::calculateScoreBoard(2, 2)); // 2 = total score
+        if(_activePlayer == PLAYERTHREE){
+            ui->C7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
+            ui->C8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
+            ui->C19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
         }
-        if(_activePlayer == 4){
-            ui->D7->setText(GameBrain::calculateScoreBoard(3, 0));  // 0 = sum of first scores
-            ui->D8->setText(GameBrain::calculateScoreBoard(3, 1));  // 1 = bonus score if sum >= 64
-            ui->D19->setText(GameBrain::calculateScoreBoard(3, 2)); // 2 = total score
+        if(_activePlayer == PLAYERFOUR){
+            ui->D7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
+            ui->D8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
+            ui->D19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
         }
         playerTurn(_numOfPlayers); // player func that changes turns to next player.
     }
@@ -220,25 +246,25 @@ void YahtzeeMainWin::aDiceWasClicked()
 void YahtzeeMainWin::on_onePlayerButton_clicked()
 {
     _numOfPlayers = 1;
-    chooseAmountOfPlayers(_numOfPlayers);
+    chooseAmountOfPlayers();
 }
 
 void YahtzeeMainWin::on_twoPlayerButton_clicked()
 {
     _numOfPlayers = 2;
-    chooseAmountOfPlayers(_numOfPlayers);
+    chooseAmountOfPlayers();
 }
 
 void YahtzeeMainWin::on_threePlayerButton_clicked()
 {
     _numOfPlayers = 3;
-    chooseAmountOfPlayers(_numOfPlayers);
+    chooseAmountOfPlayers();
 }
 
 void YahtzeeMainWin::on_fourPlayerButton_clicked()
 {
     _numOfPlayers = 4;
-    chooseAmountOfPlayers(_numOfPlayers);
+    chooseAmountOfPlayers();
 }
 
 void YahtzeeMainWin::on_optionsButton_clicked()
@@ -248,8 +274,11 @@ void YahtzeeMainWin::on_optionsButton_clicked()
 
 void YahtzeeMainWin::on_rollDiceButton_clicked()
 {
-    if(_timesRolled < 3)
+    if(_timesRolled < 2)
         displayDiceOnScreen();
+    else
+        ui->rollDiceButton->setEnabled(false);
+
     _timesRolled++;
 }
 
