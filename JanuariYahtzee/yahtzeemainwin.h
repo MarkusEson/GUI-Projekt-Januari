@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QLabel>
+#include <QPushButton>
 
 #include "gamebrain.h"
 
@@ -20,7 +21,7 @@ public:
     void optionsButtonClicked();
     void showPlayerBlockersOnClick();
     void chooseAmountOfPlayers(int numOfPlayers);
-    void setDieImage(QWidget * button, int dieValue);
+    void setDieImage(QPushButton * button, int dieValue);
     void displayDiceOnScreen();
 
 

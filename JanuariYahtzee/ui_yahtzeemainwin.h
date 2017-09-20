@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
@@ -23,7 +24,6 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QToolButton>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -121,30 +121,22 @@ public:
     QGraphicsView *playerBlockerB;
     QGraphicsView *playerBlockerC;
     QGraphicsView *playerBlockerD;
-    QGraphicsView *optionsBackground;
     QToolButton *optionsButton;
     QWidget *layoutWidget;
-    QVBoxLayout *menuLayout;
-    QLabel *menuLabel;
+    QHBoxLayout *menuLayout;
     QPushButton *onePlayerButton;
     QPushButton *twoPlayerButton;
     QPushButton *threePlayerButton;
     QPushButton *fourPlayerButton;
-    QPushButton *rollDiceButton;
-    QWidget *layoutWidget1;
-    QVBoxLayout *diceLayout;
-    QLabel *dice1Label;
-    QLabel *dice2Label;
-    QLabel *dice3Label;
-    QLabel *dice4Label;
-    QLabel *dice5Label;
+    QLabel *menuLabel;
     QWidget *verticalLayoutWidget;
     QGridLayout *diceButtonLayout;
-    QPushButton *pushButton_5;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_2;
+    QPushButton *dice1Button;
+    QPushButton *dice3Button;
+    QPushButton *dice2Button;
+    QPushButton *dice5Button;
+    QPushButton *dice4Button;
+    QPushButton *rollDiceButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -994,40 +986,17 @@ public:
         playerBlockerD->setStyleSheet(QLatin1String("background-color: rgba(114, 110, 168, 76);\n"
 "border-top-right-radius: 20;\n"
 "border-bottom-right-radius: 20;"));
-        optionsBackground = new QGraphicsView(centralWidget);
-        optionsBackground->setObjectName(QStringLiteral("optionsBackground"));
-        optionsBackground->setGeometry(QRect(435, 36, 211, 601));
-        optionsBackground->setStyleSheet(QStringLiteral("background-image: url(:/new/pictures/DMPYZY OPTIONS BACKGROUND.png);"));
-        optionsBackground->setFrameShape(QFrame::NoFrame);
-        optionsBackground->setFrameShadow(QFrame::Sunken);
         optionsButton = new QToolButton(centralWidget);
         optionsButton->setObjectName(QStringLiteral("optionsButton"));
         optionsButton->setGeometry(QRect(610, 10, 31, 22));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(460, 65, 161, 257));
-        menuLayout = new QVBoxLayout(layoutWidget);
-        menuLayout->setSpacing(6);
+        layoutWidget->setGeometry(QRect(147, 4, 331, 41));
+        menuLayout = new QHBoxLayout(layoutWidget);
+        menuLayout->setSpacing(0);
         menuLayout->setContentsMargins(11, 11, 11, 11);
         menuLayout->setObjectName(QStringLiteral("menuLayout"));
         menuLayout->setContentsMargins(0, 0, 0, 0);
-        menuLabel = new QLabel(layoutWidget);
-        menuLabel->setObjectName(QStringLiteral("menuLabel"));
-        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Minimum);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(menuLabel->sizePolicy().hasHeightForWidth());
-        menuLabel->setSizePolicy(sizePolicy1);
-        QFont font;
-        font.setFamily(QStringLiteral("Trebuchet MS"));
-        font.setPointSize(18);
-        font.setBold(true);
-        font.setWeight(75);
-        menuLabel->setFont(font);
-        menuLabel->setAlignment(Qt::AlignCenter);
-
-        menuLayout->addWidget(menuLabel);
-
         onePlayerButton = new QPushButton(layoutWidget);
         onePlayerButton->setObjectName(QStringLiteral("onePlayerButton"));
 
@@ -1048,126 +1017,98 @@ public:
 
         menuLayout->addWidget(fourPlayerButton);
 
-        onePlayerButton->raise();
-        threePlayerButton->raise();
+        menuLabel = new QLabel(layoutWidget);
+        menuLabel->setObjectName(QStringLiteral("menuLabel"));
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(menuLabel->sizePolicy().hasHeightForWidth());
+        menuLabel->setSizePolicy(sizePolicy1);
+        QFont font;
+        font.setFamily(QStringLiteral("Trebuchet MS"));
+        font.setPointSize(18);
+        font.setBold(true);
+        font.setWeight(75);
+        menuLabel->setFont(font);
+        menuLabel->setAlignment(Qt::AlignCenter);
+
+        menuLayout->addWidget(menuLabel);
+
         fourPlayerButton->raise();
         menuLabel->raise();
+        onePlayerButton->raise();
         twoPlayerButton->raise();
-        rollDiceButton = new QPushButton(centralWidget);
-        rollDiceButton->setObjectName(QStringLiteral("rollDiceButton"));
-        rollDiceButton->setEnabled(true);
-        rollDiceButton->setGeometry(QRect(480, 590, 131, 32));
-        rollDiceButton->setAutoDefault(false);
-        rollDiceButton->setFlat(false);
-        layoutWidget1 = new QWidget(centralWidget);
-        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(460, 130, 20, 451));
-        diceLayout = new QVBoxLayout(layoutWidget1);
-        diceLayout->setSpacing(-1);
-        diceLayout->setContentsMargins(11, 11, 11, 11);
-        diceLayout->setObjectName(QStringLiteral("diceLayout"));
-        diceLayout->setContentsMargins(0, 0, 0, 0);
-        dice1Label = new QLabel(layoutWidget1);
-        dice1Label->setObjectName(QStringLiteral("dice1Label"));
-        dice1Label->setStyleSheet(QStringLiteral("image: url(:/new/pictures/6dice.png);"));
-
-        diceLayout->addWidget(dice1Label);
-
-        dice2Label = new QLabel(layoutWidget1);
-        dice2Label->setObjectName(QStringLiteral("dice2Label"));
-        dice2Label->setEnabled(true);
-        dice2Label->setStyleSheet(QLatin1String("image: url(:/new/pictures/6dice.png);\n"
-""));
-
-        diceLayout->addWidget(dice2Label);
-
-        dice3Label = new QLabel(layoutWidget1);
-        dice3Label->setObjectName(QStringLiteral("dice3Label"));
-        dice3Label->setStyleSheet(QLatin1String("image: url(:/new/pictures/6dice.png);\n"
-""));
-        dice3Label->setLineWidth(1);
-
-        diceLayout->addWidget(dice3Label);
-
-        dice4Label = new QLabel(layoutWidget1);
-        dice4Label->setObjectName(QStringLiteral("dice4Label"));
-        dice4Label->setStyleSheet(QStringLiteral("image: url(:/new/pictures/6dice.png);"));
-
-        diceLayout->addWidget(dice4Label);
-
-        dice5Label = new QLabel(layoutWidget1);
-        dice5Label->setObjectName(QStringLiteral("dice5Label"));
-        dice5Label->setStyleSheet(QStringLiteral("image: url(:/new/pictures/6dice.png);"));
-
-        diceLayout->addWidget(dice5Label);
-
-        dice5Label->raise();
-        dice2Label->raise();
-        dice1Label->raise();
-        dice3Label->raise();
-        dice4Label->raise();
+        threePlayerButton->raise();
         verticalLayoutWidget = new QWidget(centralWidget);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(520, 350, 91, 231));
+        verticalLayoutWidget->setGeometry(QRect(490, 60, 111, 561));
         diceButtonLayout = new QGridLayout(verticalLayoutWidget);
         diceButtonLayout->setSpacing(6);
         diceButtonLayout->setContentsMargins(11, 11, 11, 11);
         diceButtonLayout->setObjectName(QStringLiteral("diceButtonLayout"));
         diceButtonLayout->setContentsMargins(0, 0, 0, 0);
-        pushButton_5 = new QPushButton(verticalLayoutWidget);
-        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
+        dice1Button = new QPushButton(verticalLayoutWidget);
+        dice1Button->setObjectName(QStringLiteral("dice1Button"));
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(pushButton_5->sizePolicy().hasHeightForWidth());
-        pushButton_5->setSizePolicy(sizePolicy2);
-        pushButton_5->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/1dice.png);"));
+        sizePolicy2.setHeightForWidth(dice1Button->sizePolicy().hasHeightForWidth());
+        dice1Button->setSizePolicy(sizePolicy2);
+        dice1Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/4dice.png);"));
+        dice1Button->setCheckable(false);
+        dice1Button->setChecked(false);
 
-        diceButtonLayout->addWidget(pushButton_5, 2, 0, 1, 1);
+        diceButtonLayout->addWidget(dice1Button, 0, 0, 1, 1);
 
-        pushButton_3 = new QPushButton(verticalLayoutWidget);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        sizePolicy2.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
-        pushButton_3->setSizePolicy(sizePolicy2);
-        pushButton_3->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/2dice.png);"));
+        dice3Button = new QPushButton(verticalLayoutWidget);
+        dice3Button->setObjectName(QStringLiteral("dice3Button"));
+        sizePolicy2.setHeightForWidth(dice3Button->sizePolicy().hasHeightForWidth());
+        dice3Button->setSizePolicy(sizePolicy2);
+        dice3Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/1dice.png);"));
 
-        diceButtonLayout->addWidget(pushButton_3, 1, 0, 1, 1);
+        diceButtonLayout->addWidget(dice3Button, 2, 0, 1, 1);
 
-        pushButton = new QPushButton(verticalLayoutWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        sizePolicy2.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy2);
-        pushButton->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/3dice.png);"));
-        pushButton->setAutoDefault(false);
-        pushButton->setFlat(false);
+        dice2Button = new QPushButton(verticalLayoutWidget);
+        dice2Button->setObjectName(QStringLiteral("dice2Button"));
+        sizePolicy2.setHeightForWidth(dice2Button->sizePolicy().hasHeightForWidth());
+        dice2Button->setSizePolicy(sizePolicy2);
+        dice2Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/2dice.png);"));
 
-        diceButtonLayout->addWidget(pushButton, 4, 0, 1, 1);
+        diceButtonLayout->addWidget(dice2Button, 1, 0, 1, 1);
 
-        pushButton_4 = new QPushButton(verticalLayoutWidget);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        sizePolicy2.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
-        pushButton_4->setSizePolicy(sizePolicy2);
-        pushButton_4->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/4dice.png);"));
+        dice5Button = new QPushButton(verticalLayoutWidget);
+        dice5Button->setObjectName(QStringLiteral("dice5Button"));
+        sizePolicy2.setHeightForWidth(dice5Button->sizePolicy().hasHeightForWidth());
+        dice5Button->setSizePolicy(sizePolicy2);
+        dice5Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/3dice.png);"));
+        dice5Button->setAutoDefault(false);
+        dice5Button->setFlat(false);
 
-        diceButtonLayout->addWidget(pushButton_4, 3, 0, 1, 1);
+        diceButtonLayout->addWidget(dice5Button, 4, 0, 1, 1);
 
-        pushButton_2 = new QPushButton(verticalLayoutWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        sizePolicy2.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy2);
-        pushButton_2->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/4dice.png);"));
-        pushButton_2->setCheckable(false);
-        pushButton_2->setChecked(false);
+        dice4Button = new QPushButton(verticalLayoutWidget);
+        dice4Button->setObjectName(QStringLiteral("dice4Button"));
+        sizePolicy2.setHeightForWidth(dice4Button->sizePolicy().hasHeightForWidth());
+        dice4Button->setSizePolicy(sizePolicy2);
+        dice4Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/4dice.png);"));
 
-        diceButtonLayout->addWidget(pushButton_2, 0, 0, 1, 1);
+        diceButtonLayout->addWidget(dice4Button, 3, 0, 1, 1);
 
-        pushButton_5->raise();
-        pushButton->raise();
-        pushButton_3->raise();
-        pushButton_4->raise();
-        pushButton_2->raise();
+        rollDiceButton = new QPushButton(verticalLayoutWidget);
+        rollDiceButton->setObjectName(QStringLiteral("rollDiceButton"));
+        rollDiceButton->setEnabled(true);
+        rollDiceButton->setAutoDefault(false);
+        rollDiceButton->setFlat(false);
+
+        diceButtonLayout->addWidget(rollDiceButton, 5, 0, 1, 1);
+
+        dice4Button->raise();
+        dice1Button->raise();
+        dice5Button->raise();
+        dice2Button->raise();
+        dice3Button->raise();
+        rollDiceButton->raise();
         YahtzeeMainWin->setCentralWidget(centralWidget);
-        optionsBackground->raise();
         gameBackground->raise();
         layoutWidget->raise();
         gridLayoutWidget_4->raise();
@@ -1179,8 +1120,6 @@ public:
         playerBlockerC->raise();
         playerBlockerD->raise();
         optionsButton->raise();
-        layoutWidget->raise();
-        rollDiceButton->raise();
         verticalLayoutWidget->raise();
         menuBar = new QMenuBar(YahtzeeMainWin);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -1278,22 +1217,17 @@ public:
         D5->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
         D7->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
         optionsButton->setText(QApplication::translate("YahtzeeMainWin", "Menu", Q_NULLPTR));
-        menuLabel->setText(QApplication::translate("YahtzeeMainWin", "MENU", Q_NULLPTR));
         onePlayerButton->setText(QApplication::translate("YahtzeeMainWin", "1 Player", Q_NULLPTR));
         twoPlayerButton->setText(QApplication::translate("YahtzeeMainWin", "2 Players", Q_NULLPTR));
         threePlayerButton->setText(QApplication::translate("YahtzeeMainWin", "3 Players", Q_NULLPTR));
         fourPlayerButton->setText(QApplication::translate("YahtzeeMainWin", "4 Players", Q_NULLPTR));
+        menuLabel->setText(QApplication::translate("YahtzeeMainWin", "MENU", Q_NULLPTR));
+        dice1Button->setText(QString());
+        dice3Button->setText(QString());
+        dice2Button->setText(QString());
+        dice5Button->setText(QString());
+        dice4Button->setText(QString());
         rollDiceButton->setText(QApplication::translate("YahtzeeMainWin", "Roll", Q_NULLPTR));
-        dice1Label->setText(QString());
-        dice2Label->setText(QString());
-        dice3Label->setText(QString());
-        dice4Label->setText(QString());
-        dice5Label->setText(QString());
-        pushButton_5->setText(QApplication::translate("YahtzeeMainWin", "PushButton", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("YahtzeeMainWin", "PushButton", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("YahtzeeMainWin", "PushButton", Q_NULLPTR));
-        pushButton_4->setText(QApplication::translate("YahtzeeMainWin", "PushButton", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("YahtzeeMainWin", "PushButton", Q_NULLPTR));
     } // retranslateUi
 
 };
