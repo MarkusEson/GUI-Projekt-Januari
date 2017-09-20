@@ -44,7 +44,7 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     }
     for(int i = 0; i < ui->diceButtonLayout->count(); i++){
         QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
-        connect(button, SIGNAL(clicked()), this, SLOT(aButtonWasClicked()));
+        connect(button, SIGNAL(clicked()), this, SLOT(aDiceWasClicked()));
     }
 
 
@@ -142,28 +142,37 @@ void YahtzeeMainWin::displayDiceOnScreen()
 
 }
 
+void YahtzeeMainWin::playerTurn(int numplayers)
+{
+    if(numplayers == 1){
+        _activePlayer = 1;
+    }
+
+    if(numplayers == 2){
+        _activePlayer++;
+        if(_activePlayer == 3)
+            _activePlayer = 1;
+    }
+
+    if(numplayers == 3){
+        _activePlayer++;
+        if(_activePlayer == 4)
+            _activePlayer = 1;
+    }
+
+    if(numplayers == 4){
+        _activePlayer++;
+        if(_activePlayer == 5)
+            _activePlayer = 1;
+    }
+    qDebug() << _activePlayer << endl;
+}
+
 
 void YahtzeeMainWin::aButtonWasClicked()
 {
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
 
-    // QAbstractButton *theDiceClicked = dynamic_cast<QAbstractButton*>(sender());
-    /*
-    theButton->setText("hej");
-    theButton->setEnabled(false);
-
-    ui->A7->setText("sum");
-    */
-
-    /*
-    if(theButton == ui->A1)
-    {
-        ui->A1->setChecked(true);
-    }
-    */
-
-    if(theButton == ui->dice1Button || ui->dice2Button || ui->dice3Button || ui->dice4Button || ui->dice5Button)
-        qDebug() << "hej tärning";
 
     /*
      * This function gets called every time a player clicks the scoreboard.
@@ -175,10 +184,37 @@ void YahtzeeMainWin::aButtonWasClicked()
         //dynamic_cast<QPushButton*>(sender())->setText("12");
         //dynamic_cast<QPushButton*>(sender())->setEnabled(false);
 
-            ui->A7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));  // 0 = sum of first scores
-            ui->A8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));  // 1 = bonus score if sum >= 64
-            ui->A19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2)); // 2 = total score
+        if(_activePlayer == 1){
+            ui->A7->setText(GameBrain::calculateScoreBoard(0, 0));  // 0 = sum of first scores
+            ui->A8->setText(GameBrain::calculateScoreBoard(0, 1));  // 1 = bonus score if sum >= 64
+            ui->A19->setText(GameBrain::calculateScoreBoard(0, 2)); // 2 = total score
+        }
+        if(_activePlayer == 2){
+            ui->B7->setText(GameBrain::calculateScoreBoard(1, 0));  // 0 = sum of first scores
+            ui->B8->setText(GameBrain::calculateScoreBoard(1, 1));  // 1 = bonus score if sum >= 64
+            ui->B19->setText(GameBrain::calculateScoreBoard(1, 2)); // 2 = total score
+        }
+        if(_activePlayer == 3){
+            ui->C7->setText(GameBrain::calculateScoreBoard(2, 0));  // 0 = sum of first scores
+            ui->C8->setText(GameBrain::calculateScoreBoard(2, 1));  // 1 = bonus score if sum >= 64
+            ui->C19->setText(GameBrain::calculateScoreBoard(2, 2)); // 2 = total score
+        }
+        if(_activePlayer == 4){
+            ui->D7->setText(GameBrain::calculateScoreBoard(3, 0));  // 0 = sum of first scores
+            ui->D8->setText(GameBrain::calculateScoreBoard(3, 1));  // 1 = bonus score if sum >= 64
+            ui->D19->setText(GameBrain::calculateScoreBoard(3, 2)); // 2 = total score
+        }
+        playerTurn(_numOfPlayers); // player func that changes turns to next player.
     }
+}
+
+void YahtzeeMainWin::aDiceWasClicked()
+{
+    QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
+    // QAbstractButton *theDiceClicked = dynamic_cast<QAbstractButton*>(sender());
+
+    if(theButton == ui->dice1Button || ui->dice2Button || ui->dice3Button || ui->dice4Button || ui->dice5Button)
+        qDebug() << "hej tärning";
 }
 
 void YahtzeeMainWin::on_onePlayerButton_clicked()
