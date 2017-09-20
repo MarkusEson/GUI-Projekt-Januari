@@ -217,6 +217,7 @@ DIST          = ../../../Qt/5.9.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/qt_config.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/toolchain.prf \
@@ -422,6 +423,7 @@ Makefile: JanuariYahtzee.pro ../../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake
 		../../../Qt/5.9.1/clang_64/mkspecs/features/qt_config.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../Qt/5.9.1/clang_64/mkspecs/features/toolchain.prf \
@@ -612,6 +614,7 @@ Makefile: JanuariYahtzee.pro ../../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake
 ../../../Qt/5.9.1/clang_64/mkspecs/features/qt_config.prf:
 ../../../Qt/5.9.1/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../Qt/5.9.1/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../Qt/5.9.1/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../Qt/5.9.1/clang_64/mkspecs/features/mac/sdk.prf:
 ../../../Qt/5.9.1/clang_64/mkspecs/features/toolchain.prf:
@@ -686,6 +689,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r JanuariYahtzee.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -706,10 +710,16 @@ qrc_resources.cpp: resources.qrc \
 		../../../Qt/5.9.1/clang_64/bin/rcc \
 		2dice.png \
 		6dice.png \
+		4diceClicked.png \
+		3diceClicked.png \
 		3dice.png \
+		2diceClicked.png \
 		4dice.png \
+		1diceClicked.png \
+		6diceClicked.png \
 		1dice.png \
-		5dice.png
+		5dice.png \
+		5diceClicked.png
 	/Users/markus/Qt/5.9.1/clang_64/bin/rcc -name resources resources.qrc -o qrc_resources.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -776,7 +786,9 @@ yahtzeemainwin.o: yahtzeemainwin.cpp yahtzeemainwin.h \
 		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		ui_yahtzeemainwin.h \
 		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/QAbstractButton \
-		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qabstractbutton.h
+		../../../Qt/5.9.1/clang_64/lib/QtWidgets.framework/Headers/qabstractbutton.h \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../Qt/5.9.1/clang_64/lib/QtCore.framework/Headers/qstring.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o yahtzeemainwin.o yahtzeemainwin.cpp
 
 gamebrain.o: gamebrain.cpp gamebrain.h \

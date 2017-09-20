@@ -2452,9 +2452,9 @@ border-bottom-right-radius: 20;</string>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>462</x>
+      <x>460</x>
       <y>60</y>
-      <width>161</width>
+      <width>171</width>
       <height>521</height>
      </rect>
     </property>

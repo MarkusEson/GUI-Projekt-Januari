@@ -10,5 +10,11 @@
         <file>4dice.png</file>
         <file>5dice.png</file>
         <file>6dice.png</file>
+        <file>1diceClicked.png</file>
+        <file>2diceClicked.png</file>
+        <file>3diceClicked.png</file>
+        <file>4diceClicked.png</file>
+        <file>5diceClicked.png</file>
+        <file>6diceClicked.png</file>
     </qresource>
 </RCC>
