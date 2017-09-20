@@ -13,12 +13,12 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     ui(new Ui::YahtzeeMainWin)
 {
     ui->setupUi(this);
+    ui->rollDiceButton->setEnabled(false);
 
     /*
      * A function that connects all the buttons in the grids A,B,C, and D.
      * Funktionen är inspirerad från GUI labbarna samt stackexchange sidan https://stackoverflow.com/questions/4065378/qt-get-children-from-layout
      */
-
     for(int i = 0; i < ui->Agrid->count(); i++){
         QWidget *button = ui->Agrid->itemAt(i)->widget();
         connect(button, SIGNAL(clicked()), this, SLOT(aButtonWasClicked()));
@@ -39,10 +39,6 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
         connect(button, SIGNAL(clicked()), this, SLOT(aDiceWasClicked()));
     }
-
-
-
-
 }
 
 YahtzeeMainWin::~YahtzeeMainWin()
@@ -50,23 +46,6 @@ YahtzeeMainWin::~YahtzeeMainWin()
     delete ui;
 }
 
-
-void YahtzeeMainWin::optionsButtonClicked()
-{
-    if(ui->menuLabel->isHidden()){
-        for(int i = 0; i < ui->menuLayout->count(); i++){
-             QWidget *widg = ui->menuLayout->itemAt(i)->widget();
-             widg->show();
-        }
-    }
-    else{
-        for(int i = 0; i < ui->menuLayout->count(); i++){
-             QWidget *widg = ui->menuLayout->itemAt(i)->widget();
-             widg->hide();
-        }
-    }
-
-}
 
 void YahtzeeMainWin::showPlayerBlockersOnClick()
 {
@@ -81,7 +60,6 @@ void YahtzeeMainWin::chooseAmountOfPlayers()
 {
     // First turns on the player blocker windows, then hides them according to how many players are playing.
     showPlayerBlockersOnClick();
-    optionsButtonClicked();
     ui->playerBlockerA->hide();
 }
 
@@ -243,43 +221,48 @@ void YahtzeeMainWin::aDiceWasClicked()
         qDebug() << "hej tärning";
 }
 
-void YahtzeeMainWin::on_onePlayerButton_clicked()
-{
-    _numOfPlayers = 1;
-    chooseAmountOfPlayers();
-}
 
-void YahtzeeMainWin::on_twoPlayerButton_clicked()
-{
-    _numOfPlayers = 2;
-    chooseAmountOfPlayers();
-}
 
-void YahtzeeMainWin::on_threePlayerButton_clicked()
-{
-    _numOfPlayers = 3;
-    chooseAmountOfPlayers();
-}
-
-void YahtzeeMainWin::on_fourPlayerButton_clicked()
-{
-    _numOfPlayers = 4;
-    chooseAmountOfPlayers();
-}
-
-void YahtzeeMainWin::on_optionsButton_clicked()
-{
-    optionsButtonClicked();
-}
 
 void YahtzeeMainWin::on_rollDiceButton_clicked()
 {
-    if(_timesRolled < 2)
+    if(_timesRolled <= 2 )
         displayDiceOnScreen();
-    else
+    if(_timesRolled == 2)
         ui->rollDiceButton->setEnabled(false);
 
     _timesRolled++;
 }
 
+void YahtzeeMainWin::on_onePlayerButton_triggered()
+{
+    ui->rollDiceButton->setEnabled(true);
+    _numOfPlayers = 1;
+    chooseAmountOfPlayers();
+}
 
+void YahtzeeMainWin::on_twoPlayerButton_triggered()
+{
+    ui->rollDiceButton->setEnabled(true);
+    _numOfPlayers = 2;
+    chooseAmountOfPlayers();
+}
+
+void YahtzeeMainWin::on_threePlayerButton_triggered()
+{
+    ui->rollDiceButton->setEnabled(true);
+    _numOfPlayers = 3;
+    chooseAmountOfPlayers();
+}
+
+void YahtzeeMainWin::on_fourPlayerButton_triggered()
+{
+    ui->rollDiceButton->setEnabled(true);
+    _numOfPlayers = 4;
+    chooseAmountOfPlayers();
+}
+
+void YahtzeeMainWin::on_quitButton_triggered()
+{
+    QApplication::quit();
+}

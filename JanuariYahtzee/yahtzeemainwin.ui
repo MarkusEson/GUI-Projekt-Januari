@@ -33,15 +33,15 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/new/pictures/DMPYZY BACKGROUND.png);</string>
+     <string notr="true">background-image: url(:/new/pictures/YAHTZEE BACKGROUND THREE.png);</string>
     </property>
    </widget>
    <widget class="QWidget" name="gridLayoutWidget_4">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>140</x>
       <y>40</y>
-      <width>71</width>
+      <width>81</width>
       <height>601</height>
      </rect>
     </property>
@@ -2331,91 +2331,6 @@ border-top-right-radius: 20;
 border-bottom-right-radius: 20;</string>
     </property>
    </widget>
-   <widget class="QToolButton" name="optionsButton">
-    <property name="geometry">
-     <rect>
-      <x>610</x>
-      <y>10</y>
-      <width>31</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Menu</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>147</x>
-      <y>4</y>
-      <width>331</width>
-      <height>33</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="menuLayout">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="onePlayerButton">
-       <property name="text">
-        <string>1 Player</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="twoPlayerButton">
-       <property name="text">
-        <string>2 Players</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="threePlayerButton">
-       <property name="text">
-        <string>3 Players</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="fourPlayerButton">
-       <property name="text">
-        <string>4 Players</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="menuLabel">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>Trebuchet MS</family>
-         <pointsize>18</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>MENU</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
-    <zorder>fourPlayerButton</zorder>
-    <zorder>menuLabel</zorder>
-    <zorder>onePlayerButton</zorder>
-    <zorder>twoPlayerButton</zorder>
-    <zorder>threePlayerButton</zorder>
-   </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
@@ -2438,7 +2353,7 @@ border-bottom-right-radius: 20;</string>
         <string notr="true">border-image: url(:/new/pictures/4dice.png);</string>
        </property>
        <property name="text">
-        <string> </string>
+        <string/>
        </property>
        <property name="checkable">
         <bool>false</bool>
@@ -2460,7 +2375,7 @@ border-bottom-right-radius: 20;</string>
         <string notr="true">border-image: url(:/new/pictures/1dice.png);</string>
        </property>
        <property name="text">
-        <string> </string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -2476,7 +2391,7 @@ border-bottom-right-radius: 20;</string>
         <string notr="true">border-image: url(:/new/pictures/2dice.png);</string>
        </property>
        <property name="text">
-        <string> </string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -2492,7 +2407,7 @@ border-bottom-right-radius: 20;</string>
         <string notr="true">border-image: url(:/new/pictures/3dice.png);</string>
        </property>
        <property name="text">
-        <string> </string>
+        <string/>
        </property>
        <property name="autoDefault">
         <bool>false</bool>
@@ -2514,7 +2429,7 @@ border-bottom-right-radius: 20;</string>
         <string notr="true">border-image: url(:/new/pictures/4dice.png);</string>
        </property>
        <property name="text">
-        <string> </string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -2542,18 +2457,6 @@ border-bottom-right-radius: 20;</string>
     <zorder>dice3Button</zorder>
     <zorder>rollDiceButton</zorder>
    </widget>
-   <zorder>gameBackground</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>gridLayoutWidget_4</zorder>
-   <zorder>gridLayoutWidget_5</zorder>
-   <zorder>gridLayoutWidget_6</zorder>
-   <zorder>gridLayoutWidget_7</zorder>
-   <zorder>playerBlockerA</zorder>
-   <zorder>playerBlockerB</zorder>
-   <zorder>playerBlockerC</zorder>
-   <zorder>playerBlockerD</zorder>
-   <zorder>optionsButton</zorder>
-   <zorder>verticalLayoutWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -2564,6 +2467,18 @@ border-bottom-right-radius: 20;</string>
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuOptions">
+    <property name="title">
+     <string>Options</string>
+    </property>
+    <addaction name="onePlayerButton"/>
+    <addaction name="twoPlayerButton"/>
+    <addaction name="threePlayerButton"/>
+    <addaction name="fourPlayerButton"/>
+    <addaction name="separator"/>
+    <addaction name="quitButton"/>
+   </widget>
+   <addaction name="menuOptions"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -2574,6 +2489,31 @@ border-bottom-right-radius: 20;</string>
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="onePlayerButton">
+   <property name="text">
+    <string>1 Player</string>
+   </property>
+  </action>
+  <action name="twoPlayerButton">
+   <property name="text">
+    <string>2 Player</string>
+   </property>
+  </action>
+  <action name="threePlayerButton">
+   <property name="text">
+    <string>3 Player</string>
+   </property>
+  </action>
+  <action name="fourPlayerButton">
+   <property name="text">
+    <string>4 Players</string>
+   </property>
+  </action>
+  <action name="quitButton">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
