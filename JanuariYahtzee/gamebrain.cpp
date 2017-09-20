@@ -35,36 +35,25 @@ int * GameBrain::getDiceArray() // Returns copy of array
 
 void GameBrain::xOfAKind()
 {
-
-
-    for(int j=1; j<6; j++){
+    for(int j=1; j<6; j++)
+    {
         int count = 0;
         for( int i = 0; i < 5; i++ )
         {
-          if( throwValue[i] == j )
-          {
-            count +=1;
-          }
-          if(count >= dieSort){
-              sum = j * dieSort;
-          }
-
-
+            if( throwValue[i] == j )
+                count +=1;
+            if(count >= dieSort)
+                sum = j * dieSort;
         }
     }
-      qDebug() << sum;
-      qDebug() << "ahh";
 }
 
 void GameBrain::oneToSix()
 {
-
       for( int i = 0; i < 5; i++ )
       {
         if( throwValue[i] == dieValue )
-        {
-          sum += dieValue;
-        }
+            sum += dieValue;
       }
       qDebug() << sum;
 }
@@ -74,40 +63,40 @@ void GameBrain::oneToSix()
 
 void GameBrain::fullHouse()
 {
-
- if( (((throwValue[0] == throwValue[1]) && (throwValue[1] == throwValue[2])) && // Three of a Kind
- (throwValue[3] == throwValue[4]) && // Two of a Kind
- (throwValue[2] != throwValue[3])) ||
- ((throwValue[0] == throwValue[1]) && // Two of a Kind
- ((throwValue[2] == throwValue[3]) && (throwValue[3] == throwValue[4])) && // Three of a Kind
- (throwValue[1] != throwValue[2])) ){
-     sum = throwValue[0]+throwValue[1]+throwValue[2]+throwValue[3]+throwValue[4];
- }
+    if( (((throwValue[0] == throwValue[1]) && (throwValue[1] == throwValue[2])) && // Three of a Kind
+        (throwValue[3] == throwValue[4]) && // Two of a Kind
+        (throwValue[2] != throwValue[3])) ||
+        ((throwValue[0] == throwValue[1]) && // Two of a Kind
+        ((throwValue[2] == throwValue[3]) && (throwValue[3] == throwValue[4])) && // Three of a Kind
+        (throwValue[1] != throwValue[2])) )
+    {
+        sum = throwValue[0]+throwValue[1]+throwValue[2]+throwValue[3]+throwValue[4];
+    }
 
     qDebug() << sum;
 }
 
 void GameBrain::smallLargeStraight()
 {
+    int firstStraight = 1;
+    if (smallLarge == 2){firstStraight ++;}
 
-int firstStraight = 1;
-if (smallLarge == 2){firstStraight ++;}
-
-if( ((throwValue[0] == firstStraight) &&
+    if( ((throwValue[0] == firstStraight) &&
      (throwValue[1] == firstStraight +1) &&
      (throwValue[2] == firstStraight +2) &&
      (throwValue[3] == firstStraight +3) &&
      (throwValue[4] == firstStraight +4)))
-{
-    int straightNumber = firstStraight;
-    int straightValue = firstStraight;
-    for( int i = 0; i <4; i++ ){
-        straightNumber++;
-        straightValue += straightNumber;
+    {
+        int straightNumber = firstStraight;
+        int straightValue = firstStraight;
+        for( int i = 0; i <4; i++ )
+        {
+            straightNumber++;
+            straightValue += straightNumber;
+        }
+        sum = straightValue;
     }
-  sum = straightValue;
-}
-qDebug() << sum;
+    qDebug() << sum;
 }
 
 QString GameBrain::getScoreFromArray()
@@ -129,13 +118,13 @@ QString GameBrain::calculateScoreBoard(int _activePlayer, int sumBonusOrTotal)
      */
     int score = 0;
     switch(sumBonusOrTotal){
-        case 0:{
+        case 0:{                                            // sums up the first scores.
             for(int i = 0; i < 6; i++)
                 score += _scoreArray[i][_activePlayer];
             _scoreArray[6][_activePlayer] = score;
             break;
         }
-        case 1:{
+        case 1:{                                            // adds bonus scores based on the sum.
             if(_scoreArray[6][_activePlayer] >= 63)
                 _scoreArray[7][_activePlayer] = 35;
             else
@@ -144,13 +133,12 @@ QString GameBrain::calculateScoreBoard(int _activePlayer, int sumBonusOrTotal)
             score = _scoreArray[7][_activePlayer];
             break;
         }
-        case 2:{
+        case 2:{                                            // sums upp the total score.
             for(int i = 6; i < 20; i++)
                 score += _scoreArray[i][_activePlayer];
             break;
         }
     }
-
     QString scoreToReturn = QString::number(score);
     return scoreToReturn;
 }

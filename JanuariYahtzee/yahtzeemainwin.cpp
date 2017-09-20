@@ -12,14 +12,10 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::YahtzeeMainWin)
 {
-    //xOfAKind();
-    //oneToSix();
-    //fullHouse();
-    smallLargeStraight();
     ui->setupUi(this);
 
     /*
-     * En funktion som connectar alla knappar i layouterna Agrid, Bgrid, Cgrid och Dgrid.
+     * A function that connects all the buttons in the grids A,B,C, and D.
      * Funktionen är inspirerad från GUI labbarna samt stackexchange sidan https://stackoverflow.com/questions/4065378/qt-get-children-from-layout
      *
      */
@@ -158,17 +154,18 @@ void YahtzeeMainWin::aButtonWasClicked()
     */
 
     /*
-     * En funktion som anropas varje gång någon spelare klickar på poängbrädet
-     * Räknar ihop spelarens totala mängd poäng och visar denna i Total, och Bonus.
+     * This function gets called every time a player clicks the scoreboard.
+     * Adds the players sum, Bonus, and total scores to the board.
+     * And finally disbles the button so that it cannot be clicked again.
+     * Inspired and copied from Ragnar Nohre - Lab 5
      */
     if(theButton){
         dynamic_cast<QPushButton*>(sender())->setText("12");
+        dynamic_cast<QPushButton*>(sender())->setEnabled(false);
 
-
-            ui->A7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
-            ui->A8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
-            ui->A19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
-
+            ui->A7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));  // 0 = sum of first scores
+            ui->A8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));  // 1 = bonus score if sum >= 64
+            ui->A19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2)); // 2 = total score
     }
 }
 
@@ -203,7 +200,10 @@ void YahtzeeMainWin::on_optionsButton_clicked()
 
 void YahtzeeMainWin::on_rollDiceButton_clicked()
 {
-    displayDiceOnScreen();
+    if(_timesRolled < 3)
+        displayDiceOnScreen();
+    _timesRolled++;
+    qDebug() << _timesRolled << endl;
 }
 
 
