@@ -4,9 +4,12 @@
 #include <QMainWindow>
 #include <QLabel>
 #include <QPushButton>
-
 #include "gamebrain.h"
 
+#define PLAYERONE 1
+#define PLAYERTWO 2
+#define PLAYERTHREE 3
+#define PLAYERFOUR 4
 
 
 namespace Ui {
@@ -22,10 +25,11 @@ public:
     ~YahtzeeMainWin();
     void optionsButtonClicked();
     void showPlayerBlockersOnClick();
-    void chooseAmountOfPlayers(int numOfPlayers);
+    void chooseAmountOfPlayers();
     void setDieImage(QPushButton * button, int dieValue);
     void displayDiceOnScreen();
     void playerTurn(int _numOfPlayers);
+
 
 
 

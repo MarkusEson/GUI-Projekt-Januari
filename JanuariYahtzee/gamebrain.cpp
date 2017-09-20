@@ -106,12 +106,12 @@ QString GameBrain::getScoreFromArray()
 
 QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
 {
-    _scoreArray[0][0] = 5;
-    _scoreArray[1][0] = 5;
-    _scoreArray[2][0] = 2;
-    _scoreArray[3][0] = 20;
-    _scoreArray[4][0] = 20;
-    _scoreArray[5][0] = 20;
+    _scoreArray[0][1] = 5;
+    _scoreArray[1][1] = 5;
+    _scoreArray[2][1] = 2;
+    _scoreArray[3][1] = 20;
+    _scoreArray[4][1] = 20;
+    _scoreArray[5][1] = 20;
     /*
      * A function that takes the active player, and on click sums all the players currents points and returns these to be displayed.
      * Calculates the Sum, Bonus, and Total scores.

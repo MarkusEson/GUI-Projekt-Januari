@@ -34,7 +34,7 @@ private:
     int smallLarge = 2;
 
 
-    int _scoreArray[19][3];
+    int _scoreArray[19][4];
 };
 
 #endif // GAMEBRAIN_H
