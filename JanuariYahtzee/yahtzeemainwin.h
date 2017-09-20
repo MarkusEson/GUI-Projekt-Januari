@@ -20,7 +20,7 @@ public:
     void optionsButtonClicked();
     void showPlayerBlockersOnClick();
     void chooseAmountOfPlayers(int numOfPlayers);
-    void setDieImage(QLabel * label, int dieValue);
+    void setDieImage(QWidget * button, int dieValue);
     void displayDiceOnScreen();
 
 

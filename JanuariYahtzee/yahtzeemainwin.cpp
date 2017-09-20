@@ -17,7 +17,6 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     /*
      * A function that connects all the buttons in the grids A,B,C, and D.
      * Funktionen är inspirerad från GUI labbarna samt stackexchange sidan https://stackoverflow.com/questions/4065378/qt-get-children-from-layout
-     *
      */
 
     for(int i = 0; i < ui->Agrid->count(); i++){
@@ -36,13 +35,16 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
         QWidget *button = ui->Dgrid->itemAt(i)->widget();
         connect(button, SIGNAL(clicked()), this, SLOT(aButtonWasClicked()));
     }
+    for(int i = 0; i < ui->diceLayout->count(); i++){
+        QWidget *button = ui->diceLayout->itemAt(i)->widget();
+        connect(button, SIGNAL(clicked()), this, SLOT(aButtonWasClicked()));
+    }
 }
 
 YahtzeeMainWin::~YahtzeeMainWin()
 {
     delete ui;
 }
-
 
 void YahtzeeMainWin::optionsButtonClicked()
 {
@@ -111,11 +113,11 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
 
 }
 
-void YahtzeeMainWin::setDieImage(QLabel * label, int dieValue)
+void YahtzeeMainWin::setDieImage(QWidget * button, int dieValue)
 {
     // Med inspiration av grupp... mars? april?
     QString string = "QWidget {image: url(:/new/pictures/" + QString::number(dieValue) + "dice.png) }";
-    label->setStyleSheet(string);
+    button->setStyleSheet(string);
 }
 
 void YahtzeeMainWin::displayDiceOnScreen()
@@ -123,13 +125,11 @@ void YahtzeeMainWin::displayDiceOnScreen()
     gameBrain.rollDice();
 
     int * arrayWithDice = gameBrain.getDiceArray();
-
     setDieImage(ui->dice1Label, arrayWithDice[0]);
     setDieImage(ui->dice2Label, arrayWithDice[1]);
     setDieImage(ui->dice3Label, arrayWithDice[2]);
     setDieImage(ui->dice4Label, arrayWithDice[3]);
     setDieImage(ui->dice5Label, arrayWithDice[4]);
-
     delete arrayWithDice;
 }
 

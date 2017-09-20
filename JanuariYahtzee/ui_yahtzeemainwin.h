@@ -1049,7 +1049,7 @@ public:
         rollDiceButton->setFlat(false);
         layoutWidget1 = new QWidget(centralWidget);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(462, 60, 161, 521));
+        layoutWidget1->setGeometry(QRect(460, 60, 171, 521));
         diceLayout = new QVBoxLayout(layoutWidget1);
         diceLayout->setSpacing(-1);
         diceLayout->setContentsMargins(11, 11, 11, 11);
