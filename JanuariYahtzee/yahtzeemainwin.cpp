@@ -13,6 +13,13 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     ui(new Ui::YahtzeeMainWin)
 {
     ui->setupUi(this);
+    /*
+    ui->dice1Button->hide();
+    ui->dice2Button->hide();
+    ui->dice3Button->hide();
+    ui->dice4Button->hide();
+    ui->dice5Button->hide();
+    */
 
     /*
      * A function that connects all the buttons in the grids A,B,C, and D.
@@ -56,14 +63,12 @@ void YahtzeeMainWin::optionsButtonClicked()
              QWidget *widg = ui->menuLayout->itemAt(i)->widget();
              widg->show();
         }
-        ui->optionsBackground->show();
     }
     else{
         for(int i = 0; i < ui->menuLayout->count(); i++){
              QWidget *widg = ui->menuLayout->itemAt(i)->widget();
              widg->hide();
         }
-        ui->optionsBackground->hide();
     }
 
 }
@@ -116,10 +121,10 @@ void YahtzeeMainWin::chooseAmountOfPlayers(int num)
 
 }
 
-void YahtzeeMainWin::setDieImage(QWidget * button, int dieValue)
+void YahtzeeMainWin::setDieImage(QPushButton * button, int dieValue)
 {
     // Med inspiration av grupp... mars? april?
-    QString string = "QWidget {image: url(:/new/pictures/" + QString::number(dieValue) + "dice.png) }";
+    QString string = "QPushButton {border-image: url(:/new/pictures/" + QString::number(dieValue) + "dice.png) }";
     button->setStyleSheet(string);
 }
 
@@ -128,11 +133,11 @@ void YahtzeeMainWin::displayDiceOnScreen()
     gameBrain.rollDice();
 
     int * arrayWithDice = gameBrain.getDiceArray();
-    setDieImage(ui->dice1Label, arrayWithDice[0]);
-    setDieImage(ui->dice2Label, arrayWithDice[1]);
-    setDieImage(ui->dice3Label, arrayWithDice[2]);
-    setDieImage(ui->dice4Label, arrayWithDice[3]);
-    setDieImage(ui->dice5Label, arrayWithDice[4]);
+    setDieImage(ui->dice1Button, arrayWithDice[0]);
+    setDieImage(ui->dice2Button, arrayWithDice[1]);
+    setDieImage(ui->dice3Button, arrayWithDice[2]);
+    setDieImage(ui->dice4Button, arrayWithDice[3]);
+    setDieImage(ui->dice5Button, arrayWithDice[4]);
     delete arrayWithDice;
 
 }
@@ -157,7 +162,7 @@ void YahtzeeMainWin::aButtonWasClicked()
     }
     */
 
-    if(theButton == ui->pushButton)
+    if(theButton == ui->dice1Button || ui->dice2Button || ui->dice3Button || ui->dice4Button || ui->dice5Button)
         qDebug() << "hej tärning";
 
     /*
