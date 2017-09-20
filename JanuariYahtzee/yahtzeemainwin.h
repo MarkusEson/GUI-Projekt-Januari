@@ -7,6 +7,8 @@
 
 #include "gamebrain.h"
 
+
+
 namespace Ui {
 class YahtzeeMainWin;
 }
@@ -23,19 +25,21 @@ public:
     void chooseAmountOfPlayers(int numOfPlayers);
     void setDieImage(QPushButton * button, int dieValue);
     void displayDiceOnScreen();
+    void playerTurn(int _numOfPlayers);
 
 
 
 private:
     Ui::YahtzeeMainWin *ui;
     int _numOfPlayers = 0;
-    int _activePlayer = 0;
+    int _activePlayer = 1;
     int _timesRolled = 0;
     GameBrain gameBrain;
 
 
 private slots:
     void aButtonWasClicked();
+    void aDiceWasClicked();
     void on_onePlayerButton_clicked();
     void on_twoPlayerButton_clicked();
     void on_threePlayerButton_clicked();

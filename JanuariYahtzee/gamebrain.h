@@ -22,7 +22,7 @@ public:
     void smallLargeStraight();
 
     QString getScoreFromArray();
-    QString calculateScoreBoard(int _activePlayer, int sumBonusOrTotal);
+    QString calculateScoreBoard(int player, int sumBonusOrTotal);
 
 
 private:

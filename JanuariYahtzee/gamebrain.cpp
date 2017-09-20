@@ -104,7 +104,7 @@ QString GameBrain::getScoreFromArray()
     //QString numToPrint = QString::number();
 }
 
-QString GameBrain::calculateScoreBoard(int _activePlayer, int sumBonusOrTotal)
+QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
 {
     _scoreArray[0][0] = 5;
     _scoreArray[1][0] = 5;
@@ -120,22 +120,22 @@ QString GameBrain::calculateScoreBoard(int _activePlayer, int sumBonusOrTotal)
     switch(sumBonusOrTotal){
         case 0:{                                            // sums up the first scores.
             for(int i = 0; i < 6; i++)
-                score += _scoreArray[i][_activePlayer];
-            _scoreArray[6][_activePlayer] = score;
+                score += _scoreArray[i][player];
+            _scoreArray[6][player] = score;
             break;
         }
         case 1:{                                            // adds bonus scores based on the sum.
-            if(_scoreArray[6][_activePlayer] >= 63)
-                _scoreArray[7][_activePlayer] = 35;
+            if(_scoreArray[6][player] >= 63)
+                _scoreArray[7][player] = 35;
             else
-                _scoreArray[7][_activePlayer] = 0;
+                _scoreArray[7][player] = 0;
 
-            score = _scoreArray[7][_activePlayer];
+            score = _scoreArray[7][player];
             break;
         }
         case 2:{                                            // sums upp the total score.
-            for(int i = 6; i < 20; i++)
-                score += _scoreArray[i][_activePlayer];
+            for(int i = 6; i < 19; i++)
+                score += _scoreArray[i][player];
             break;
         }
     }
