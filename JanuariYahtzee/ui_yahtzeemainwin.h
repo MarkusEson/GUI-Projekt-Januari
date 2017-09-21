@@ -16,12 +16,11 @@
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -33,7 +32,6 @@ public:
     QAction *twoPlayerButton;
     QAction *threePlayerButton;
     QAction *fourPlayerButton;
-    QAction *quitButton;
     QWidget *centralWidget;
     QGraphicsView *gameBackground;
     QWidget *gridLayoutWidget_4;
@@ -132,17 +130,16 @@ public:
     QPushButton *dice5Button;
     QPushButton *dice4Button;
     QPushButton *rollDiceButton;
+    QLabel *helpLabel;
     QMenuBar *menuBar;
     QMenu *menuOptions;
-    QToolBar *mainToolBar;
-    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *YahtzeeMainWin)
     {
         if (YahtzeeMainWin->objectName().isEmpty())
             YahtzeeMainWin->setObjectName(QStringLiteral("YahtzeeMainWin"));
-        YahtzeeMainWin->resize(650, 698);
-        YahtzeeMainWin->setMinimumSize(QSize(650, 698));
+        YahtzeeMainWin->resize(650, 680);
+        YahtzeeMainWin->setMinimumSize(QSize(650, 680));
         YahtzeeMainWin->setStyleSheet(QStringLiteral(""));
         onePlayerButton = new QAction(YahtzeeMainWin);
         onePlayerButton->setObjectName(QStringLiteral("onePlayerButton"));
@@ -152,8 +149,6 @@ public:
         threePlayerButton->setObjectName(QStringLiteral("threePlayerButton"));
         fourPlayerButton = new QAction(YahtzeeMainWin);
         fourPlayerButton->setObjectName(QStringLiteral("fourPlayerButton"));
-        quitButton = new QAction(YahtzeeMainWin);
-        quitButton->setObjectName(QStringLiteral("quitButton"));
         centralWidget = new QWidget(YahtzeeMainWin);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gameBackground = new QGraphicsView(centralWidget);
@@ -162,7 +157,7 @@ public:
         gameBackground->setStyleSheet(QStringLiteral("background-image: url(:/new/pictures/YAHTZEE BACKGROUND THREE.png);"));
         gridLayoutWidget_4 = new QWidget(centralWidget);
         gridLayoutWidget_4->setObjectName(QStringLiteral("gridLayoutWidget_4"));
-        gridLayoutWidget_4->setGeometry(QRect(140, 40, 81, 601));
+        gridLayoutWidget_4->setGeometry(QRect(150, 40, 71, 601));
         Agrid = new QGridLayout(gridLayoutWidget_4);
         Agrid->setSpacing(0);
         Agrid->setContentsMargins(11, 11, 11, 11);
@@ -994,7 +989,7 @@ public:
 "border-bottom-right-radius: 20;"));
         verticalLayoutWidget = new QWidget(centralWidget);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(490, 60, 111, 561));
+        verticalLayoutWidget->setGeometry(QRect(490, 70, 111, 551));
         diceButtonLayout = new QGridLayout(verticalLayoutWidget);
         diceButtonLayout->setSpacing(6);
         diceButtonLayout->setContentsMargins(11, 11, 11, 11);
@@ -1061,6 +1056,16 @@ public:
         dice2Button->raise();
         dice3Button->raise();
         rollDiceButton->raise();
+        helpLabel = new QLabel(centralWidget);
+        helpLabel->setObjectName(QStringLiteral("helpLabel"));
+        helpLabel->setGeometry(QRect(0, 0, 581, 21));
+        QFont font;
+        font.setFamily(QStringLiteral("Arial"));
+        font.setPointSize(14);
+        font.setBold(true);
+        font.setWeight(75);
+        helpLabel->setFont(font);
+        helpLabel->setAlignment(Qt::AlignCenter);
         YahtzeeMainWin->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(YahtzeeMainWin);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -1068,12 +1073,6 @@ public:
         menuOptions = new QMenu(menuBar);
         menuOptions->setObjectName(QStringLiteral("menuOptions"));
         YahtzeeMainWin->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(YahtzeeMainWin);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        YahtzeeMainWin->addToolBar(Qt::TopToolBarArea, mainToolBar);
-        statusBar = new QStatusBar(YahtzeeMainWin);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
-        YahtzeeMainWin->setStatusBar(statusBar);
 
         menuBar->addAction(menuOptions->menuAction());
         menuOptions->addAction(onePlayerButton);
@@ -1081,7 +1080,6 @@ public:
         menuOptions->addAction(threePlayerButton);
         menuOptions->addAction(fourPlayerButton);
         menuOptions->addSeparator();
-        menuOptions->addAction(quitButton);
 
         retranslateUi(YahtzeeMainWin);
 
@@ -1095,7 +1093,6 @@ public:
         twoPlayerButton->setText(QApplication::translate("YahtzeeMainWin", "2 Player", Q_NULLPTR));
         threePlayerButton->setText(QApplication::translate("YahtzeeMainWin", "3 Player", Q_NULLPTR));
         fourPlayerButton->setText(QApplication::translate("YahtzeeMainWin", "4 Players", Q_NULLPTR));
-        quitButton->setText(QApplication::translate("YahtzeeMainWin", "Quit", Q_NULLPTR));
         A8->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
         A17->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
         A18->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
@@ -1178,6 +1175,7 @@ public:
         dice5Button->setText(QString());
         dice4Button->setText(QString());
         rollDiceButton->setText(QApplication::translate("YahtzeeMainWin", "Roll", Q_NULLPTR));
+        helpLabel->setText(QApplication::translate("YahtzeeMainWin", "Open Options to start a Game!", Q_NULLPTR));
         menuOptions->setTitle(QApplication::translate("YahtzeeMainWin", "Options", Q_NULLPTR));
     } // retranslateUi
 

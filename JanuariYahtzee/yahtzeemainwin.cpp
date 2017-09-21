@@ -262,7 +262,3 @@ void YahtzeeMainWin::on_fourPlayerButton_triggered()
     chooseAmountOfPlayers();
 }
 
-void YahtzeeMainWin::on_quitButton_triggered()
-{
-    QApplication::quit();
-}
