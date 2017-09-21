@@ -29,12 +29,18 @@ void GameBrain::rollDice()
 
 }
 
-int * GameBrain::getDiceArray() // Returns copy of array
+Die * GameBrain::getDiceArray() // Returns copy of array
 {
-    int * pointerToDiceArrayCopy = new int[5];
+    Die * pointerToDiceArrayCopy = new Die[5];
     for (int i = 0; i < 5; i++)
-        pointerToDiceArrayCopy[i] = _diceArray[i].getValue();
+        pointerToDiceArrayCopy[i] = _diceArray[i];
     return pointerToDiceArrayCopy;
+}
+
+void GameBrain::checkDie(int dieNumber)
+{
+    _diceArray[dieNumber - 1].checkDie();
+    qDebug() << "Tärning nr: " << dieNumber << "blev checkad/avcheckad";
 }
 
 void GameBrain::xOfAKind()

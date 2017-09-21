@@ -29,7 +29,8 @@ public:
     ~GameBrain();
 
     void rollDice();
-    int *getDiceArray();
+    Die *getDiceArray();
+    void checkDie(int dieNumber);
 
     void oneToSix();
     void xOfAKind();

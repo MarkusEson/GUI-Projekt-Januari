@@ -63,18 +63,27 @@ void YahtzeeMainWin::chooseAmountOfPlayers()
     ui->playerBlockerA->hide();
 }
 
-void YahtzeeMainWin::setDieImage(QPushButton * button, int dieValue)
+void YahtzeeMainWin::setDieImage(QPushButton * button, Die die)
 {
-    // Med inspiration av grupp... mars? april?
-    QString string = "QPushButton {border-image: url(:/new/pictures/" + QString::number(dieValue) + "dice.png) }";
-    button->setStyleSheet(string);
+    // Med inspiration av grupp mars
+    if (!die.checkIsChecked())
+    {
+        QString string = "QPushButton {border-image: url(:/new/pictures/" + QString::number(die.getValue()) + "dice.png) }";
+        button->setStyleSheet(string);
+    }
+    else
+    {
+        QString string = "QPushButton {border-image: url(:/new/pictures/" + QString::number(die.getValue()) + "diceClicked.png) }";
+        button->setStyleSheet(string);
+    }
+
 }
 
 void YahtzeeMainWin::displayDiceOnScreen()
 {
     gameBrain.rollDice();
 
-    int * arrayWithDice = gameBrain.getDiceArray();
+    Die * arrayWithDice = gameBrain.getDiceArray();
     setDieImage(ui->dice1Button, arrayWithDice[0]);
     setDieImage(ui->dice2Button, arrayWithDice[1]);
     setDieImage(ui->dice3Button, arrayWithDice[2]);
@@ -219,6 +228,16 @@ void YahtzeeMainWin::aDiceWasClicked()
 
     if(theButton == ui->dice1Button || ui->dice2Button || ui->dice3Button || ui->dice4Button || ui->dice5Button)
         qDebug() << "hej tärning";
+    if (theButton == ui->dice1Button)
+        gameBrain.checkDie(1);
+    else if (theButton == ui->dice2Button)
+        gameBrain.checkDie(2);
+    else if (theButton == ui->dice3Button)
+        gameBrain.checkDie(3);
+    else if (theButton == ui->dice4Button)
+        gameBrain.checkDie(4);
+    else if (theButton == ui->dice5Button)
+        gameBrain.checkDie(5);
 }
 
 

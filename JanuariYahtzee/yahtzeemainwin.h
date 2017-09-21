@@ -25,7 +25,7 @@ public:
     ~YahtzeeMainWin();
     void showPlayerBlockersOnClick();
     void chooseAmountOfPlayers();
-    void setDieImage(QPushButton * button, int dieValue);
+    void setDieImage(QPushButton * button, Die die);
     void displayDiceOnScreen();
     void playerTurn(int _numOfPlayers);
 
