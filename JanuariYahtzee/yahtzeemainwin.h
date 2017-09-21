@@ -50,7 +50,7 @@ private slots:
     void on_onePlayerButton_triggered();
     void on_twoPlayerButton_triggered();
     void on_fourPlayerButton_triggered();
-    void on_quitButton_triggered();
+
 };
 
 #endif // YAHTZEEMAINWIN_H
