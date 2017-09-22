@@ -25,12 +25,9 @@ public:
     ~YahtzeeMainWin();
     void showPlayerBlockersOnClick();
     void chooseAmountOfPlayers();
-    void setDieImage(QPushButton * button, int dieValue);
+    void setDieImage(QPushButton * button, Die die);
     void displayDiceOnScreen();
     void playerTurn(int _numOfPlayers);
-
-
-
 
 private:
     Ui::YahtzeeMainWin *ui;
@@ -44,8 +41,6 @@ private slots:
     void aButtonWasClicked();
     void aDiceWasClicked();
     void on_rollDiceButton_clicked();
-
-
     void on_threePlayerButton_triggered();
     void on_onePlayerButton_triggered();
     void on_twoPlayerButton_triggered();

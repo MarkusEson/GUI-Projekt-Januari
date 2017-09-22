@@ -1,11 +1,26 @@
 #ifndef GAMEBRAIN_H
 #define GAMEBRAIN_H
 
-// #include <iostream>
 #include <algorithm>
 #include <QDebug>
 #include <stdlib.h>
 #include <time.h>
+
+class Die {
+public:
+    Die();
+    ~Die();
+
+    void setValue(int newValue);
+    int getValue();
+    bool checkIsChecked();
+    void checkDie();
+
+private:
+    int _value = 6;
+    bool _isChecked = 0;
+
+};
 
 class GameBrain
 {
@@ -14,19 +29,18 @@ public:
     ~GameBrain();
 
     void rollDice();
-    int *getDiceArray();
-
+    Die *getDiceArray();
+    void checkDie(int dieNumber);
     void oneToSix();
     void xOfAKind();
     void fullHouse();
     void smallLargeStraight();
-
     QString getScoreFromArray();
     QString calculateScoreBoard(int player, int sumBonusOrTotal);
 
 
 private:
-    int diceArray[5];
+    Die _diceArray[5];
     int throwValue [5] = {2,3,4,5,6};           //testvariabler för funktionerna
     int dieValue = 4;
     int sum = 0;

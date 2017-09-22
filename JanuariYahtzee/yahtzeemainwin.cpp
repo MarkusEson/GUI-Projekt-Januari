@@ -65,25 +65,33 @@ void YahtzeeMainWin::chooseAmountOfPlayers()
     ui->playerBlockerA->hide();
 }
 
-void YahtzeeMainWin::setDieImage(QPushButton * button, int dieValue)
+void YahtzeeMainWin::setDieImage(QPushButton * button, Die die)
 {
-    // Med inspiration av grupp... mars? april?
-    QString string = "QPushButton {border-image: url(:/new/pictures/" + QString::number(dieValue) + "dice.png) }";
-    button->setStyleSheet(string);
+    // Med inspiration av grupp mars
+    if (!die.checkIsChecked())
+    {
+        QString string = "QPushButton {border-image: url(:/new/pictures/" + QString::number(die.getValue()) + "dice.png) }";
+        button->setStyleSheet(string);
+    }
+    else
+    {
+        QString string = "QPushButton {border-image: url(:/new/pictures/" + QString::number(die.getValue()) + "diceClicked.png) }";
+        button->setStyleSheet(string);
+    }
+
 }
 
 void YahtzeeMainWin::displayDiceOnScreen()
 {
     gameBrain.rollDice();
 
-    int * arrayWithDice = gameBrain.getDiceArray();
+    Die * arrayWithDice = gameBrain.getDiceArray();
     setDieImage(ui->dice1Button, arrayWithDice[0]);
     setDieImage(ui->dice2Button, arrayWithDice[1]);
     setDieImage(ui->dice3Button, arrayWithDice[2]);
     setDieImage(ui->dice4Button, arrayWithDice[3]);
     setDieImage(ui->dice5Button, arrayWithDice[4]);
     delete arrayWithDice;
-
 }
 
 void YahtzeeMainWin::playerTurn(int numplayers)
@@ -179,24 +187,14 @@ void YahtzeeMainWin::playerTurn(int numplayers)
 }
 
 
-
-
 void YahtzeeMainWin::aButtonWasClicked()
 {
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
 
-    /*
-     * This function gets called every time a player clicks the scoreboard.
-     * Adds the players sum, Bonus, and total scores to the board.
-     * And finally disbles the button so that it cannot be clicked again.
-     * calculateScoreBoard(<the players index in _scoreArray>, <the scoreIndexer>)
-     * score indexer = 1: score, 2: bonus, 3: Total Score
-     * - Markus
-     */
+    //qDebug() << "FUNKTIONENENENENN";
 
-    if(theButton){
-        //dynamic_cast<QPushButton*>(sender())->setText("12");
-        //dynamic_cast<QPushButton*>(sender())->setEnabled(false);
+    theButton->setText("hej");
+    theButton->setEnabled(false);
 
         if(_activePlayer == PLAYERONE){
             ui->A7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
@@ -219,8 +217,8 @@ void YahtzeeMainWin::aButtonWasClicked()
             ui->D19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
         }
         playerTurn(_numOfPlayers); // player func that changes turns to next player.
-    }
 }
+
 
 void YahtzeeMainWin::aDiceWasClicked()
 {
@@ -229,10 +227,17 @@ void YahtzeeMainWin::aDiceWasClicked()
 
     if(theButton == ui->dice1Button || ui->dice2Button || ui->dice3Button || ui->dice4Button || ui->dice5Button)
         qDebug() << "hej tärning";
+    if (theButton == ui->dice1Button)
+        gameBrain.checkDie(1);
+    else if (theButton == ui->dice2Button)
+        gameBrain.checkDie(2);
+    else if (theButton == ui->dice3Button)
+        gameBrain.checkDie(3);
+    else if (theButton == ui->dice4Button)
+        gameBrain.checkDie(4);
+    else if (theButton == ui->dice5Button)
+        gameBrain.checkDie(5);
 }
-
-
-
 
 void YahtzeeMainWin::on_rollDiceButton_clicked()
 {
