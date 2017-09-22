@@ -102,8 +102,6 @@ void YahtzeeMainWin::playerTurn(int numplayers)
      * input = how many players are playing?
      * - Markus
      */
-
-
     _timesRolled = 0;                           // resets _timesRolled, so next player can now roll again.
     ui->rollDiceButton->setEnabled(true);       // sets the rollDice button to enabled, so it can be clicked.
 
@@ -117,8 +115,6 @@ void YahtzeeMainWin::playerTurn(int numplayers)
         _activePlayer++;
         if(_activePlayer == 3)
             _activePlayer = PLAYERONE;
-
-
         if(_activePlayer == PLAYERONE){
             ui->playerBlockerA->hide();
             ui->playerBlockerB->show();
@@ -183,16 +179,13 @@ void YahtzeeMainWin::playerTurn(int numplayers)
             ui->playerBlockerD->hide();
         }
     }
-    qDebug() << _activePlayer << endl;
+    qDebug() << "Current player is: " << _activePlayer << endl;
 }
 
 
 void YahtzeeMainWin::aButtonWasClicked()
 {
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
-
-    //qDebug() << "FUNKTIONENENENENN";
-
     theButton->setText("hej");
     theButton->setEnabled(false);
 

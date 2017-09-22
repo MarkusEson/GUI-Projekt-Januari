@@ -69,8 +69,6 @@ void GameBrain::oneToSix()
 }
 
 
-
-
 void GameBrain::fullHouse()
 {
     if( (((throwValue[0] == throwValue[1]) && (throwValue[1] == throwValue[2])) && // Three of a Kind
