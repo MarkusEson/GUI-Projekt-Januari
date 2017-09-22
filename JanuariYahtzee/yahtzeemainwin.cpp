@@ -92,6 +92,7 @@ void YahtzeeMainWin::displayDiceOnScreen()
     setDieImage(ui->dice4Button, arrayWithDice[3]);
     setDieImage(ui->dice5Button, arrayWithDice[4]);
     delete arrayWithDice;
+    //delete arrayWithDice;
 }
 
 void YahtzeeMainWin::playerTurn(int numplayers)
