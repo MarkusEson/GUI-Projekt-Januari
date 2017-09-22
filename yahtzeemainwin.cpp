@@ -18,9 +18,7 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     /*
      * A function that connects all the buttons in the grids A,B,C, and D.
      * Funktionen är inspirerad från GUI labbarna samt stackexchange sidan https://stackoverflow.com/questions/4065378/qt-get-children-from-layout
-     * - Markus
      */
-
     for(int i = 0; i < ui->Agrid->count(); i++){
         QWidget *button = ui->Agrid->itemAt(i)->widget();
         connect(button, SIGNAL(clicked()), this, SLOT(aButtonWasClicked()));
@@ -81,7 +79,7 @@ void YahtzeeMainWin::setDieImage(QPushButton * button, Die die)
 
 }
 
-void YahtzeeMainWin::setDieImage(QLabel * label, int dieValue)
+void YahtzeeMainWin::displayDiceOnScreen()
 {
     gameBrain.rollDice();
 
@@ -97,23 +95,6 @@ void YahtzeeMainWin::setDieImage(QLabel * label, int dieValue)
 
 void YahtzeeMainWin::playerTurn(int numplayers)
 {
-    _timesRolled = 0;                           // resets _timesRolled, so next player can now roll again.
-    ui->rollDiceButton->setEnabled(true);       // sets the rollDice button to enabled, so it can be clicked.
-
-    int * arrayWithDice = gameBrain.getDiceArray();
-
-}
-
-void YahtzeeMainWin::playerTurn(int numplayers)
-{
-    /*
-     * A bad PlayerTurn function, loops through the player turns.
-     * If there are three players,it loops through player grid A, B and C.
-     * input = how many players are playing?
-     * - Markus
-     */
-
-
     _timesRolled = 0;                           // resets _timesRolled, so next player can now roll again.
     ui->rollDiceButton->setEnabled(true);       // sets the rollDice button to enabled, so it can be clicked.
 
@@ -193,6 +174,8 @@ void YahtzeeMainWin::playerTurn(int numplayers)
             ui->playerBlockerD->hide();
         }
     }
+
+
     qDebug() << _activePlayer << endl;
 }
 
@@ -203,14 +186,20 @@ void YahtzeeMainWin::aButtonWasClicked()
 {
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
 
-    //qDebug() << "FUNKTIONENENENENN";
 
-    theButton->setText("hej");
-    theButton->setEnabled(false);
+    /*
+     * This function gets called every time a player clicks the scoreboard.
+     * Adds the players sum, Bonus, and total scores to the board.
+     * And finally disbles the button so that it cannot be clicked again.
+     * Inspired and copied from Ragnar Nohre - Lab 5
+     */
+    if(theButton){
+        //dynamic_cast<QPushButton*>(sender())->setText("12");
+        //dynamic_cast<QPushButton*>(sender())->setEnabled(false);
 
         if(_activePlayer == PLAYERONE){
-            ui->A7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
-            ui->A8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
+            ui->A7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));  // calculateScoreBoard(<the players index in _scoreArray>, <the scoreIndexer>)
+            ui->A8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));  // score indexer = 1: score, 2: bonus, 3: Total Score
             ui->A19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
         }
         if(_activePlayer == PLAYERTWO){
@@ -256,13 +245,7 @@ void YahtzeeMainWin::aDiceWasClicked()
 
 void YahtzeeMainWin::on_rollDiceButton_clicked()
 {
-    /*
-     * Calls the function displayDiceOnScreen to roll the dice and display the dive image.
-     * Does this 3 times, then locks the Roll button.
-     * - Markus
-     */
-
-    if(_timesRolled <= 2)
+    if(_timesRolled <= 2 )
         displayDiceOnScreen();
     if(_timesRolled == 2)
         ui->rollDiceButton->setEnabled(false);
