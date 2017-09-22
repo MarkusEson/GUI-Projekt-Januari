@@ -29,9 +29,6 @@ public:
     void displayDiceOnScreen();
     void playerTurn(int _numOfPlayers);
 
-
-
-
 private:
     Ui::YahtzeeMainWin *ui;
     int _numOfPlayers = 0;
@@ -44,8 +41,6 @@ private slots:
     void aButtonWasClicked();
     void aDiceWasClicked();
     void on_rollDiceButton_clicked();
-
-
     void on_threePlayerButton_triggered();
     void on_onePlayerButton_triggered();
     void on_twoPlayerButton_triggered();

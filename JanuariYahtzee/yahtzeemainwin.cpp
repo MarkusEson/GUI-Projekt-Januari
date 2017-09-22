@@ -81,7 +81,7 @@ void YahtzeeMainWin::setDieImage(QPushButton * button, Die die)
 
 }
 
-void YahtzeeMainWin::setDieImage(QLabel * label, int dieValue)
+void YahtzeeMainWin::displayDiceOnScreen()
 {
     gameBrain.rollDice();
 
@@ -92,16 +92,6 @@ void YahtzeeMainWin::setDieImage(QLabel * label, int dieValue)
     setDieImage(ui->dice4Button, arrayWithDice[3]);
     setDieImage(ui->dice5Button, arrayWithDice[4]);
     delete arrayWithDice;
-
-}
-
-void YahtzeeMainWin::playerTurn(int numplayers)
-{
-    _timesRolled = 0;                           // resets _timesRolled, so next player can now roll again.
-    ui->rollDiceButton->setEnabled(true);       // sets the rollDice button to enabled, so it can be clicked.
-
-    int * arrayWithDice = gameBrain.getDiceArray();
-
 }
 
 void YahtzeeMainWin::playerTurn(int numplayers)
@@ -197,8 +187,6 @@ void YahtzeeMainWin::playerTurn(int numplayers)
 }
 
 
-
-
 void YahtzeeMainWin::aButtonWasClicked()
 {
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
@@ -229,8 +217,8 @@ void YahtzeeMainWin::aButtonWasClicked()
             ui->D19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
         }
         playerTurn(_numOfPlayers); // player func that changes turns to next player.
-    }
 }
+
 
 void YahtzeeMainWin::aDiceWasClicked()
 {
@@ -250,9 +238,6 @@ void YahtzeeMainWin::aDiceWasClicked()
     else if (theButton == ui->dice5Button)
         gameBrain.checkDie(5);
 }
-
-
-
 
 void YahtzeeMainWin::on_rollDiceButton_clicked()
 {

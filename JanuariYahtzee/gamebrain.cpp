@@ -23,10 +23,10 @@ void GameBrain::rollDice()
     }
     std::sort(_diceArray, _diceArray + 5, [](Die & a, Die & b) -> bool { return a.getValue() < b.getValue(); });
     qDebug() << "Sorterat!";
+
     // Här har vi använt kod inspirerad av https://stackoverflow.com/questions/12823573/c-sorting-class-array
     // Lambakoden förklarar för sort att objekten ska sorteras efter värdena som returneras från "getValue()"
     // Tänkte att det var nog bäst att ha lambakod eftersom det bara är i rollDice() den är relevant
-
 }
 
 Die * GameBrain::getDiceArray() // Returns copy of array

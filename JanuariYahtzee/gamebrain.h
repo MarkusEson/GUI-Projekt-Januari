@@ -31,19 +31,16 @@ public:
     void rollDice();
     Die *getDiceArray();
     void checkDie(int dieNumber);
-
     void oneToSix();
     void xOfAKind();
     void fullHouse();
     void smallLargeStraight();
-
     QString getScoreFromArray();
     QString calculateScoreBoard(int player, int sumBonusOrTotal);
 
 
 private:
     Die _diceArray[5];
-
     int throwValue [5] = {2,3,4,5,6};           //testvariabler för funktionerna
     int dieValue = 4;
     int sum = 0;
