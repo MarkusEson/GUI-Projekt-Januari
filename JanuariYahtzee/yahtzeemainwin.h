@@ -27,6 +27,7 @@ public:
     void chooseAmountOfPlayers();
     void setDieImage(QPushButton * button, Die die);
     void displayDiceOnScreen();
+    void displayScoreOnScreen();
     void playerTurn(int _numOfPlayers);
 
 private:

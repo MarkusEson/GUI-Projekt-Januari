@@ -20,7 +20,6 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
      * Funktionen är inspirerad från GUI labbarna samt stackexchange sidan https://stackoverflow.com/questions/4065378/qt-get-children-from-layout
      * - Markus
      */
-
     for(int i = 0; i < ui->Agrid->count(); i++){
         QWidget *button = ui->Agrid->itemAt(i)->widget();
         connect(button, SIGNAL(clicked()), this, SLOT(aButtonWasClicked()));
@@ -91,8 +90,38 @@ void YahtzeeMainWin::displayDiceOnScreen()
     setDieImage(ui->dice3Button, arrayWithDice[2]);
     setDieImage(ui->dice4Button, arrayWithDice[3]);
     setDieImage(ui->dice5Button, arrayWithDice[4]);
-    delete arrayWithDice;
     //delete arrayWithDice;
+    //delete arrayWithDice;
+}
+
+void YahtzeeMainWin::displayScoreOnScreen()
+{
+    /*
+     * A function that displays the Scores, Bonuses and TOtal Scores on the display.
+     * Looks at who is the active player to update the scores.
+     * - Markus
+     */
+    if(_activePlayer == PLAYERONE){
+        ui->A7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
+        ui->A8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
+        ui->A19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
+    }
+    if(_activePlayer == PLAYERTWO){
+        ui->B7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
+        ui->B8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
+        ui->B19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
+    }
+    if(_activePlayer == PLAYERTHREE){
+        ui->C7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
+        ui->C8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
+        ui->C19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
+    }
+    if(_activePlayer == PLAYERFOUR){
+        ui->D7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
+        ui->D8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
+        ui->D19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
+    }
+
 }
 
 void YahtzeeMainWin::playerTurn(int numplayers)
@@ -188,29 +217,13 @@ void YahtzeeMainWin::aButtonWasClicked()
 {
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
     theButton->setText("hej");
-    theButton->setEnabled(false);
 
-        if(_activePlayer == PLAYERONE){
-            ui->A7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
-            ui->A8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
-            ui->A19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
-        }
-        if(_activePlayer == PLAYERTWO){
-            ui->B7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
-            ui->B8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
-            ui->B19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
-        }
-        if(_activePlayer == PLAYERTHREE){
-            ui->C7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
-            ui->C8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
-            ui->C19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
-        }
-        if(_activePlayer == PLAYERFOUR){
-            ui->D7->setText(GameBrain::calculateScoreBoard(_activePlayer, 0));
-            ui->D8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
-            ui->D19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
-        }
+    if(theButton)
+    {
+        theButton->setEnabled(false); // disables the button so that you cannot add points here again.
+        displayScoreOnScreen();
         playerTurn(_numOfPlayers); // player func that changes turns to next player.
+    }
 }
 
 
@@ -220,7 +233,8 @@ void YahtzeeMainWin::aDiceWasClicked()
     // QAbstractButton *theDiceClicked = dynamic_cast<QAbstractButton*>(sender());
 
     if(theButton == ui->dice1Button || ui->dice2Button || ui->dice3Button || ui->dice4Button || ui->dice5Button)
-        qDebug() << "hej tärning";
+        qDebug() << "Clicked a dicebutton" << endl;
+
     if (theButton == ui->dice1Button)
         gameBrain.checkDie(1);
     else if (theButton == ui->dice2Button)
