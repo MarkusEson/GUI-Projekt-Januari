@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'yahtzeemainwin.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.9.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -18,12 +18,9 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
-#include <QtWidgets/QToolButton>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -31,6 +28,10 @@ QT_BEGIN_NAMESPACE
 class Ui_YahtzeeMainWin
 {
 public:
+    QAction *onePlayerButton;
+    QAction *twoPlayerButton;
+    QAction *threePlayerButton;
+    QAction *fourPlayerButton;
     QWidget *centralWidget;
     QGraphicsView *gameBackground;
     QWidget *gridLayoutWidget_4;
@@ -121,43 +122,42 @@ public:
     QGraphicsView *playerBlockerB;
     QGraphicsView *playerBlockerC;
     QGraphicsView *playerBlockerD;
-    QGraphicsView *optionsBackground;
-    QToolButton *optionsButton;
-    QWidget *layoutWidget;
-    QVBoxLayout *menuLayout;
-    QLabel *menuLabel;
-    QPushButton *onePlayerButton;
-    QPushButton *twoPlayerButton;
-    QPushButton *threePlayerButton;
-    QPushButton *fourPlayerButton;
+    QWidget *verticalLayoutWidget;
+    QGridLayout *diceButtonLayout;
+    QPushButton *dice1Button;
+    QPushButton *dice3Button;
+    QPushButton *dice2Button;
+    QPushButton *dice5Button;
+    QPushButton *dice4Button;
     QPushButton *rollDiceButton;
-    QWidget *layoutWidget1;
-    QVBoxLayout *diceLayout;
-    QLabel *dice1Label;
-    QLabel *dice2Label;
-    QLabel *dice3Label;
-    QLabel *dice4Label;
-    QLabel *dice5Label;
+    QLabel *helpLabel;
     QMenuBar *menuBar;
-    QToolBar *mainToolBar;
-    QStatusBar *statusBar;
+    QMenu *menuOptions;
 
     void setupUi(QMainWindow *YahtzeeMainWin)
     {
         if (YahtzeeMainWin->objectName().isEmpty())
             YahtzeeMainWin->setObjectName(QStringLiteral("YahtzeeMainWin"));
-        YahtzeeMainWin->resize(650, 698);
-        YahtzeeMainWin->setMinimumSize(QSize(650, 698));
+        YahtzeeMainWin->resize(650, 680);
+        YahtzeeMainWin->setMinimumSize(QSize(650, 680));
         YahtzeeMainWin->setStyleSheet(QStringLiteral(""));
+        onePlayerButton = new QAction(YahtzeeMainWin);
+        onePlayerButton->setObjectName(QStringLiteral("onePlayerButton"));
+        twoPlayerButton = new QAction(YahtzeeMainWin);
+        twoPlayerButton->setObjectName(QStringLiteral("twoPlayerButton"));
+        threePlayerButton = new QAction(YahtzeeMainWin);
+        threePlayerButton->setObjectName(QStringLiteral("threePlayerButton"));
+        fourPlayerButton = new QAction(YahtzeeMainWin);
+        fourPlayerButton->setObjectName(QStringLiteral("fourPlayerButton"));
         centralWidget = new QWidget(YahtzeeMainWin);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gameBackground = new QGraphicsView(centralWidget);
         gameBackground->setObjectName(QStringLiteral("gameBackground"));
         gameBackground->setGeometry(QRect(0, 0, 650, 699));
-        gameBackground->setStyleSheet(QStringLiteral("background-image: url(:/new/pictures/DMPYZY BACKGROUND.png);"));
+        gameBackground->setStyleSheet(QStringLiteral("background-image: url(:/new/pictures/YAHTZEE BACKGROUND THREE.png);"));
         gridLayoutWidget_4 = new QWidget(centralWidget);
         gridLayoutWidget_4->setObjectName(QStringLiteral("gridLayoutWidget_4"));
-        gridLayoutWidget_4->setGeometry(QRect(150, 40, 71, 642));
+        gridLayoutWidget_4->setGeometry(QRect(150, 40, 71, 601));
         Agrid = new QGridLayout(gridLayoutWidget_4);
         Agrid->setSpacing(0);
         Agrid->setContentsMargins(11, 11, 11, 11);
@@ -363,7 +363,7 @@ public:
 
         gridLayoutWidget_5 = new QWidget(centralWidget);
         gridLayoutWidget_5->setObjectName(QStringLiteral("gridLayoutWidget_5"));
-        gridLayoutWidget_5->setGeometry(QRect(220, 40, 71, 640));
+        gridLayoutWidget_5->setGeometry(QRect(220, 40, 71, 601));
         Bgrid = new QGridLayout(gridLayoutWidget_5);
         Bgrid->setSpacing(0);
         Bgrid->setContentsMargins(11, 11, 11, 11);
@@ -565,7 +565,7 @@ public:
 
         gridLayoutWidget_6 = new QWidget(centralWidget);
         gridLayoutWidget_6->setObjectName(QStringLiteral("gridLayoutWidget_6"));
-        gridLayoutWidget_6->setGeometry(QRect(290, 40, 71, 642));
+        gridLayoutWidget_6->setGeometry(QRect(290, 40, 71, 601));
         Cgrid = new QGridLayout(gridLayoutWidget_6);
         Cgrid->setSpacing(0);
         Cgrid->setContentsMargins(11, 11, 11, 11);
@@ -767,7 +767,7 @@ public:
 
         gridLayoutWidget_7 = new QWidget(centralWidget);
         gridLayoutWidget_7->setObjectName(QStringLiteral("gridLayoutWidget_7"));
-        gridLayoutWidget_7->setGeometry(QRect(360, 40, 71, 642));
+        gridLayoutWidget_7->setGeometry(QRect(360, 40, 71, 601));
         Dgrid = new QGridLayout(gridLayoutWidget_7);
         Dgrid->setSpacing(0);
         Dgrid->setContentsMargins(11, 11, 11, 11);
@@ -987,138 +987,99 @@ public:
         playerBlockerD->setStyleSheet(QLatin1String("background-color: rgba(114, 110, 168, 76);\n"
 "border-top-right-radius: 20;\n"
 "border-bottom-right-radius: 20;"));
-        optionsBackground = new QGraphicsView(centralWidget);
-        optionsBackground->setObjectName(QStringLiteral("optionsBackground"));
-        optionsBackground->setGeometry(QRect(435, 36, 211, 611));
-        optionsBackground->setStyleSheet(QStringLiteral("background-image: url(:/new/pictures/DMPYZY OPTIONS BACKGROUND.png);"));
-        optionsBackground->setFrameShape(QFrame::NoFrame);
-        optionsBackground->setFrameShadow(QFrame::Sunken);
-        optionsButton = new QToolButton(centralWidget);
-        optionsButton->setObjectName(QStringLiteral("optionsButton"));
-        optionsButton->setGeometry(QRect(610, 10, 31, 22));
-        layoutWidget = new QWidget(centralWidget);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(460, 65, 161, 171));
-        menuLayout = new QVBoxLayout(layoutWidget);
-        menuLayout->setSpacing(6);
-        menuLayout->setContentsMargins(11, 11, 11, 11);
-        menuLayout->setObjectName(QStringLiteral("menuLayout"));
-        menuLayout->setContentsMargins(0, 0, 0, 0);
-        menuLabel = new QLabel(layoutWidget);
-        menuLabel->setObjectName(QStringLiteral("menuLabel"));
-        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        verticalLayoutWidget = new QWidget(centralWidget);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(490, 70, 111, 551));
+        diceButtonLayout = new QGridLayout(verticalLayoutWidget);
+        diceButtonLayout->setSpacing(6);
+        diceButtonLayout->setContentsMargins(11, 11, 11, 11);
+        diceButtonLayout->setObjectName(QStringLiteral("diceButtonLayout"));
+        diceButtonLayout->setContentsMargins(0, 0, 0, 0);
+        dice1Button = new QPushButton(verticalLayoutWidget);
+        dice1Button->setObjectName(QStringLiteral("dice1Button"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(menuLabel->sizePolicy().hasHeightForWidth());
-        menuLabel->setSizePolicy(sizePolicy1);
-        QFont font;
-        font.setFamily(QStringLiteral("Trebuchet MS"));
-        font.setPointSize(18);
-        font.setBold(true);
-        font.setWeight(75);
-        menuLabel->setFont(font);
-        menuLabel->setAlignment(Qt::AlignCenter);
+        sizePolicy1.setHeightForWidth(dice1Button->sizePolicy().hasHeightForWidth());
+        dice1Button->setSizePolicy(sizePolicy1);
+        dice1Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/4dice.png);"));
+        dice1Button->setCheckable(false);
+        dice1Button->setChecked(false);
 
-        menuLayout->addWidget(menuLabel);
+        diceButtonLayout->addWidget(dice1Button, 0, 0, 1, 1);
 
-        onePlayerButton = new QPushButton(layoutWidget);
-        onePlayerButton->setObjectName(QStringLiteral("onePlayerButton"));
+        dice3Button = new QPushButton(verticalLayoutWidget);
+        dice3Button->setObjectName(QStringLiteral("dice3Button"));
+        sizePolicy1.setHeightForWidth(dice3Button->sizePolicy().hasHeightForWidth());
+        dice3Button->setSizePolicy(sizePolicy1);
+        dice3Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/1dice.png);"));
 
-        menuLayout->addWidget(onePlayerButton);
+        diceButtonLayout->addWidget(dice3Button, 2, 0, 1, 1);
 
-        twoPlayerButton = new QPushButton(layoutWidget);
-        twoPlayerButton->setObjectName(QStringLiteral("twoPlayerButton"));
+        dice2Button = new QPushButton(verticalLayoutWidget);
+        dice2Button->setObjectName(QStringLiteral("dice2Button"));
+        sizePolicy1.setHeightForWidth(dice2Button->sizePolicy().hasHeightForWidth());
+        dice2Button->setSizePolicy(sizePolicy1);
+        dice2Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/2dice.png);"));
 
-        menuLayout->addWidget(twoPlayerButton);
+        diceButtonLayout->addWidget(dice2Button, 1, 0, 1, 1);
 
-        threePlayerButton = new QPushButton(layoutWidget);
-        threePlayerButton->setObjectName(QStringLiteral("threePlayerButton"));
+        dice5Button = new QPushButton(verticalLayoutWidget);
+        dice5Button->setObjectName(QStringLiteral("dice5Button"));
+        sizePolicy1.setHeightForWidth(dice5Button->sizePolicy().hasHeightForWidth());
+        dice5Button->setSizePolicy(sizePolicy1);
+        dice5Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/3dice.png);"));
+        dice5Button->setAutoDefault(false);
+        dice5Button->setFlat(false);
 
-        menuLayout->addWidget(threePlayerButton);
+        diceButtonLayout->addWidget(dice5Button, 4, 0, 1, 1);
 
-        fourPlayerButton = new QPushButton(layoutWidget);
-        fourPlayerButton->setObjectName(QStringLiteral("fourPlayerButton"));
+        dice4Button = new QPushButton(verticalLayoutWidget);
+        dice4Button->setObjectName(QStringLiteral("dice4Button"));
+        sizePolicy1.setHeightForWidth(dice4Button->sizePolicy().hasHeightForWidth());
+        dice4Button->setSizePolicy(sizePolicy1);
+        dice4Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/4dice.png);"));
 
-        menuLayout->addWidget(fourPlayerButton);
+        diceButtonLayout->addWidget(dice4Button, 3, 0, 1, 1);
 
-        rollDiceButton = new QPushButton(centralWidget);
+        rollDiceButton = new QPushButton(verticalLayoutWidget);
         rollDiceButton->setObjectName(QStringLiteral("rollDiceButton"));
         rollDiceButton->setEnabled(true);
-        rollDiceButton->setGeometry(QRect(480, 10, 121, 32));
         rollDiceButton->setAutoDefault(false);
         rollDiceButton->setFlat(false);
-        layoutWidget1 = new QWidget(centralWidget);
-        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(482, 70, 121, 541));
-        diceLayout = new QVBoxLayout(layoutWidget1);
-        diceLayout->setSpacing(12);
-        diceLayout->setContentsMargins(11, 11, 11, 11);
-        diceLayout->setObjectName(QStringLiteral("diceLayout"));
-        diceLayout->setContentsMargins(0, 0, 0, 0);
-        dice1Label = new QLabel(layoutWidget1);
-        dice1Label->setObjectName(QStringLiteral("dice1Label"));
-        dice1Label->setStyleSheet(QStringLiteral("image: url(:/new/pictures/6dice.png);"));
 
-        diceLayout->addWidget(dice1Label);
+        diceButtonLayout->addWidget(rollDiceButton, 5, 0, 1, 1);
 
-        dice2Label = new QLabel(layoutWidget1);
-        dice2Label->setObjectName(QStringLiteral("dice2Label"));
-        dice2Label->setEnabled(true);
-        dice2Label->setStyleSheet(QLatin1String("image: url(:/new/pictures/6dice.png);\n"
-""));
-
-        diceLayout->addWidget(dice2Label);
-
-        dice3Label = new QLabel(layoutWidget1);
-        dice3Label->setObjectName(QStringLiteral("dice3Label"));
-        dice3Label->setStyleSheet(QLatin1String("image: url(:/new/pictures/6dice.png);\n"
-""));
-        dice3Label->setLineWidth(1);
-
-        diceLayout->addWidget(dice3Label);
-
-        dice4Label = new QLabel(layoutWidget1);
-        dice4Label->setObjectName(QStringLiteral("dice4Label"));
-        dice4Label->setStyleSheet(QStringLiteral("image: url(:/new/pictures/6dice.png);"));
-
-        diceLayout->addWidget(dice4Label);
-
-        dice5Label = new QLabel(layoutWidget1);
-        dice5Label->setObjectName(QStringLiteral("dice5Label"));
-        dice5Label->setStyleSheet(QStringLiteral("image: url(:/new/pictures/6dice.png);"));
-
-        diceLayout->addWidget(dice5Label);
-
-        dice3Label->raise();
-        dice4Label->raise();
-        dice5Label->raise();
-        dice2Label->raise();
-        dice1Label->raise();
-        YahtzeeMainWin->setCentralWidget(centralWidget);
-        layoutWidget->raise();
-        gameBackground->raise();
-        optionsBackground->raise();
-        gridLayoutWidget_4->raise();
-        gridLayoutWidget_5->raise();
-        gridLayoutWidget_6->raise();
-        gridLayoutWidget_7->raise();
-        playerBlockerA->raise();
-        playerBlockerB->raise();
-        playerBlockerC->raise();
-        playerBlockerD->raise();
-        optionsButton->raise();
-        layoutWidget->raise();
+        dice4Button->raise();
+        dice1Button->raise();
+        dice5Button->raise();
+        dice2Button->raise();
+        dice3Button->raise();
         rollDiceButton->raise();
+        helpLabel = new QLabel(centralWidget);
+        helpLabel->setObjectName(QStringLiteral("helpLabel"));
+        helpLabel->setGeometry(QRect(0, 0, 581, 21));
+        QFont font;
+        font.setFamily(QStringLiteral("Arial"));
+        font.setPointSize(14);
+        font.setBold(true);
+        font.setWeight(75);
+        helpLabel->setFont(font);
+        helpLabel->setAlignment(Qt::AlignCenter);
+        YahtzeeMainWin->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(YahtzeeMainWin);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 650, 21));
+        menuBar->setGeometry(QRect(0, 0, 650, 22));
+        menuOptions = new QMenu(menuBar);
+        menuOptions->setObjectName(QStringLiteral("menuOptions"));
         YahtzeeMainWin->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(YahtzeeMainWin);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        YahtzeeMainWin->addToolBar(Qt::TopToolBarArea, mainToolBar);
-        statusBar = new QStatusBar(YahtzeeMainWin);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
-        YahtzeeMainWin->setStatusBar(statusBar);
+
+        menuBar->addAction(menuOptions->menuAction());
+        menuOptions->addAction(onePlayerButton);
+        menuOptions->addAction(twoPlayerButton);
+        menuOptions->addAction(threePlayerButton);
+        menuOptions->addAction(fourPlayerButton);
+        menuOptions->addSeparator();
 
         retranslateUi(YahtzeeMainWin);
 
@@ -1127,95 +1088,95 @@ public:
 
     void retranslateUi(QMainWindow *YahtzeeMainWin)
     {
-        YahtzeeMainWin->setWindowTitle(QApplication::translate("YahtzeeMainWin", "YahtzeeMainWin", 0));
-        A8->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A17->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A18->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A13->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A1->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A15->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A14->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A5->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A10->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A11->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A2->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A9->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A19->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A6->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A3->setText(QApplication::translate("YahtzeeMainWin", "0 ", 0));
-        A12->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A7->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A4->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        A16->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B14->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B12->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B7->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B18->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B1->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B13->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B11->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B17->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B9->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B16->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B8->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B6->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B19->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B10->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B15->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B4->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B2->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B5->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        B3->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C17->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C13->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C14->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C9->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C15->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C18->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C2->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C19->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C5->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C3->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C11->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C6->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C10->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C12->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C7->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C8->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C4->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C16->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        C1->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D4->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D16->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D13->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D15->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D9->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D3->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D14->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D1->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D6->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D17->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D19->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D8->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D10->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D12->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D2->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D11->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D18->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D5->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        D7->setText(QApplication::translate("YahtzeeMainWin", "0", 0));
-        optionsButton->setText(QApplication::translate("YahtzeeMainWin", "Menu", 0));
-        menuLabel->setText(QApplication::translate("YahtzeeMainWin", "MENU", 0));
-        onePlayerButton->setText(QApplication::translate("YahtzeeMainWin", "1 Player", 0));
-        twoPlayerButton->setText(QApplication::translate("YahtzeeMainWin", "2 Players", 0));
-        threePlayerButton->setText(QApplication::translate("YahtzeeMainWin", "3 Players", 0));
-        fourPlayerButton->setText(QApplication::translate("YahtzeeMainWin", "4 Players", 0));
-        rollDiceButton->setText(QApplication::translate("YahtzeeMainWin", "Roll", 0));
-        dice1Label->setText(QString());
-        dice2Label->setText(QString());
-        dice3Label->setText(QString());
-        dice4Label->setText(QString());
-        dice5Label->setText(QString());
+        YahtzeeMainWin->setWindowTitle(QApplication::translate("YahtzeeMainWin", "YahtzeeMainWin", Q_NULLPTR));
+        onePlayerButton->setText(QApplication::translate("YahtzeeMainWin", "1 Player", Q_NULLPTR));
+        twoPlayerButton->setText(QApplication::translate("YahtzeeMainWin", "2 Player", Q_NULLPTR));
+        threePlayerButton->setText(QApplication::translate("YahtzeeMainWin", "3 Player", Q_NULLPTR));
+        fourPlayerButton->setText(QApplication::translate("YahtzeeMainWin", "4 Players", Q_NULLPTR));
+        A8->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        A17->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        A18->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        A13->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        A1->setText(QApplication::translate("YahtzeeMainWin", "1", Q_NULLPTR));
+        A15->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        A14->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        A5->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        A10->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        A11->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        A2->setText(QApplication::translate("YahtzeeMainWin", "3", Q_NULLPTR));
+        A9->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        A19->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        A6->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        A3->setText(QApplication::translate("YahtzeeMainWin", "0 ", Q_NULLPTR));
+        A12->setText(QApplication::translate("YahtzeeMainWin", "2", Q_NULLPTR));
+        A7->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        A4->setText(QApplication::translate("YahtzeeMainWin", "5", Q_NULLPTR));
+        A16->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B14->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B12->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B7->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B18->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B1->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B13->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B11->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B17->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B9->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B16->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B8->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B6->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B19->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B10->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B15->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B4->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B2->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B5->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        B3->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C17->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C13->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C14->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C9->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C15->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C18->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C2->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C19->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C5->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C3->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C11->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C6->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C10->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C12->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C7->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C8->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C4->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C16->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        C1->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D4->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D16->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D13->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D15->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D9->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D3->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D14->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D1->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D6->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D17->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D19->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D8->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D10->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D12->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D2->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D11->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D18->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D5->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        D7->setText(QApplication::translate("YahtzeeMainWin", "0", Q_NULLPTR));
+        dice1Button->setText(QString());
+        dice3Button->setText(QString());
+        dice2Button->setText(QString());
+        dice5Button->setText(QString());
+        dice4Button->setText(QString());
+        rollDiceButton->setText(QApplication::translate("YahtzeeMainWin", "Roll", Q_NULLPTR));
+        helpLabel->setText(QApplication::translate("YahtzeeMainWin", "Open Options to start a Game!", Q_NULLPTR));
+        menuOptions->setTitle(QApplication::translate("YahtzeeMainWin", "Options", Q_NULLPTR));
     } // retranslateUi
 
 };
