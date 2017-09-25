@@ -125,7 +125,7 @@ void YahtzeeMainWin::displayScoreOnScreen()
 }
 
 void YahtzeeMainWin::playerTurn(int numplayers)
-{
+{  
     /*
      * A bad PlayerTurn function, loops through the player turns.
      * If there are three players,it loops through player grid A, B and C.
@@ -185,27 +185,21 @@ void YahtzeeMainWin::playerTurn(int numplayers)
             _activePlayer = PLAYERONE;
 
         if(_activePlayer == PLAYERONE){
+            showPlayerBlockersOnClick();
             ui->playerBlockerA->hide();
-            ui->playerBlockerB->show();
-            ui->playerBlockerC->show();
-            ui->playerBlockerD->show();
         }
         else if(_activePlayer == PLAYERTWO){
-            ui->playerBlockerA->show();
+            showPlayerBlockersOnClick();
             ui->playerBlockerB->hide();
-            ui->playerBlockerC->show();
-            ui->playerBlockerD->show();
+
         }
         else if(_activePlayer == PLAYERTHREE){
-            ui->playerBlockerA->show();
-            ui->playerBlockerB->show();
+            showPlayerBlockersOnClick();
             ui->playerBlockerC->hide();
-            ui->playerBlockerD->show();
+
         }
         else{
-            ui->playerBlockerA->show();
-            ui->playerBlockerB->show();
-            ui->playerBlockerC->show();
+            showPlayerBlockersOnClick();
             ui->playerBlockerD->hide();
         }
     }
