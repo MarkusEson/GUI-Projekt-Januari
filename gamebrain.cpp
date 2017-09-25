@@ -68,9 +68,6 @@ void GameBrain::oneToSix()
       qDebug() << sum;
 }
 
-
-
-
 void GameBrain::fullHouse()
 {
     if( (((throwValue[0] == throwValue[1]) && (throwValue[1] == throwValue[2])) && // Three of a Kind
@@ -165,6 +162,14 @@ QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
     }
     QString scoreToReturn = QString::number(score);
     return scoreToReturn;
+}
+
+void GameBrain::resetChecked()
+{
+    for(int i = 0; i < 5; i++){
+        if(_diceArray[i].checkIsChecked())
+            _diceArray[i].checkDie();
+    }
 }
 
 // ------ Die - koden -----------------

@@ -40,6 +40,7 @@ public:
     QString getScoreFromArray();
     QString calculateScoreBoard(int player, int sumBonusOrTotal);
 
+    void resetChecked();
 
 private:
     Die _diceArray[5];

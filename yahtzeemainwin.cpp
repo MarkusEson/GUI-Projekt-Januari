@@ -13,7 +13,6 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     ui(new Ui::YahtzeeMainWin)
 {
     ui->setupUi(this);
-    ui->rollDiceButton->setEnabled(false);
 
     /*
      * A function that connects all the buttons in the grids A,B,C, and D.
@@ -38,6 +37,7 @@ YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     for(int i = 0; i < ui->diceButtonLayout->count(); i++){
         QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
         connect(button, SIGNAL(clicked()), this, SLOT(aDiceWasClicked()));
+        button->setDisabled(true); // Disabled so that player can't lock the dice until rolled
     }
 }
 
@@ -45,7 +45,6 @@ YahtzeeMainWin::~YahtzeeMainWin()
 {
     delete ui;
 }
-
 
 void YahtzeeMainWin::showPlayerBlockersOnClick()
 {
@@ -76,13 +75,10 @@ void YahtzeeMainWin::setDieImage(QPushButton * button, Die die)
         QString string = "QPushButton {border-image: url(:/new/pictures/" + QString::number(die.getValue()) + "diceClicked.png) }";
         button->setStyleSheet(string);
     }
-
 }
 
-void YahtzeeMainWin::displayDiceOnScreen()
+void YahtzeeMainWin::displayDiceOnScreen() // Removed rollDice func
 {
-    gameBrain.rollDice();
-
     Die * arrayWithDice = gameBrain.getDiceArray();
     setDieImage(ui->dice1Button, arrayWithDice[0]);
     setDieImage(ui->dice2Button, arrayWithDice[1]);
@@ -90,7 +86,6 @@ void YahtzeeMainWin::displayDiceOnScreen()
     setDieImage(ui->dice4Button, arrayWithDice[3]);
     setDieImage(ui->dice5Button, arrayWithDice[4]);
     delete arrayWithDice;
-
 }
 
 void YahtzeeMainWin::playerTurn(int numplayers)
@@ -98,55 +93,8 @@ void YahtzeeMainWin::playerTurn(int numplayers)
     _timesRolled = 0;                           // resets _timesRolled, so next player can now roll again.
     ui->rollDiceButton->setEnabled(true);       // sets the rollDice button to enabled, so it can be clicked.
 
-    // If there are one player playing do this:
-    if(numplayers == 1){
-        _activePlayer = PLAYERONE;
-    }
-
-    // If there are two players Playing do this:
-    if(numplayers == 2){
-        _activePlayer++;
-        if(_activePlayer == 3)
-            _activePlayer = PLAYERONE;
-
-
-        if(_activePlayer == PLAYERONE){
-            ui->playerBlockerA->hide();
-            ui->playerBlockerB->show();
-        }
-        else{
-            ui->playerBlockerA->show();
-            ui->playerBlockerB->hide();
-        }
-    }
-
-    // If there are three players playing do this:
-    if(numplayers == 3){
-        _activePlayer++;
-        if(_activePlayer == 4)
-            _activePlayer = PLAYERONE;
-
-        if(_activePlayer == PLAYERONE){
-            ui->playerBlockerA->hide();
-            ui->playerBlockerB->show();
-            ui->playerBlockerC->show();
-        }
-        else if(_activePlayer == PLAYERTWO){
-            ui->playerBlockerA->show();
-            ui->playerBlockerB->hide();
-            ui->playerBlockerC->show();
-        }
-        else{
-            ui->playerBlockerA->show();
-            ui->playerBlockerB->show();
-            ui->playerBlockerC->hide();
-        }
-    }
-
-    // If there are four players playing do this:
-    if(numplayers == 4){
-        _activePlayer++;
-        if(_activePlayer == 5)
+    for(int i = 0; i < numplayers; i++){
+        if(_activePlayer > numplayers)
             _activePlayer = PLAYERONE;
 
         if(_activePlayer == PLAYERONE){
@@ -158,34 +106,23 @@ void YahtzeeMainWin::playerTurn(int numplayers)
         else if(_activePlayer == PLAYERTWO){
             ui->playerBlockerA->show();
             ui->playerBlockerB->hide();
-            ui->playerBlockerC->show();
-            ui->playerBlockerD->show();
         }
         else if(_activePlayer == PLAYERTHREE){
-            ui->playerBlockerA->show();
             ui->playerBlockerB->show();
             ui->playerBlockerC->hide();
-            ui->playerBlockerD->show();
         }
-        else{
-            ui->playerBlockerA->show();
-            ui->playerBlockerB->show();
+        else if(_activePlayer == PLAYERFOUR){
             ui->playerBlockerC->show();
             ui->playerBlockerD->hide();
         }
     }
 
-
     qDebug() << _activePlayer << endl;
 }
-
-
-
 
 void YahtzeeMainWin::aButtonWasClicked()
 {
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
-
 
     /*
      * This function gets called every time a player clicks the scoreboard.
@@ -217,17 +154,23 @@ void YahtzeeMainWin::aButtonWasClicked()
             ui->D8->setText(GameBrain::calculateScoreBoard(_activePlayer, 1));
             ui->D19->setText(GameBrain::calculateScoreBoard(_activePlayer, 2));
         }
+
+        _activePlayer++;
+        gameBrain.resetChecked();
         playerTurn(_numOfPlayers); // player func that changes turns to next player.
+        displayDiceOnScreen();
+
+        for(int i = 0; i < ui->diceButtonLayout->count() - 1; i++){
+            QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
+                button->setDisabled(true);
+        }
     }
 }
 
 void YahtzeeMainWin::aDiceWasClicked()
 {
     QPushButton *theButton = dynamic_cast<QPushButton*>(sender());
-    // QAbstractButton *theDiceClicked = dynamic_cast<QAbstractButton*>(sender());
 
-    if(theButton == ui->dice1Button || ui->dice2Button || ui->dice3Button || ui->dice4Button || ui->dice5Button)
-        qDebug() << "hej tärning";
     if (theButton == ui->dice1Button)
         gameBrain.checkDie(1);
     else if (theButton == ui->dice2Button)
@@ -238,17 +181,23 @@ void YahtzeeMainWin::aDiceWasClicked()
         gameBrain.checkDie(4);
     else if (theButton == ui->dice5Button)
         gameBrain.checkDie(5);
+
+    displayDiceOnScreen();
 }
 
-
-
-
-void YahtzeeMainWin::on_rollDiceButton_clicked()
+void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
 {
     if(_timesRolled <= 2 )
+        gameBrain.rollDice();
         displayDiceOnScreen();
     if(_timesRolled == 2)
         ui->rollDiceButton->setEnabled(false);
+
+    for(int i = 0; i < ui->diceButtonLayout->count(); i++){
+        QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
+            if(!button->isEnabled())
+                button->setEnabled(true);
+    }
 
     _timesRolled++;
 }
