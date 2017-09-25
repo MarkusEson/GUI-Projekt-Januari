@@ -57,6 +57,8 @@ void YahtzeeMainWin::showPlayerBlockersOnClick()
 void YahtzeeMainWin::chooseAmountOfPlayers()
 {
     // First turns on the player blocker windows, then hides them according to how many players are playing.
+    _activePlayer = PLAYERONE;
+    showPlayerBlockersOnClick();
     ui->playerBlockerA->hide();
 }
 
@@ -187,7 +189,7 @@ void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
         gameBrain.rollDice();
         displayDiceOnScreen();
     if(_timesRolled == 2)
-        ui->rollDiceButton->setEnabled(false);
+        ui->rollDiceButton->setDisabled(true);
 
     for(int i = 0; i < ui->diceButtonLayout->count(); i++){
         QWidget *button = ui->diceButtonLayout->itemAt(i)->widget();
@@ -225,4 +227,3 @@ void YahtzeeMainWin::on_fourPlayerButton_triggered()
     _numOfPlayers = 4;
     chooseAmountOfPlayers();
 }
-
