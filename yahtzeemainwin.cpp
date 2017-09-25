@@ -7,7 +7,6 @@
 #include <QString>
 
 
-
 YahtzeeMainWin::YahtzeeMainWin(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::YahtzeeMainWin)
@@ -58,7 +57,6 @@ void YahtzeeMainWin::showPlayerBlockersOnClick()
 void YahtzeeMainWin::chooseAmountOfPlayers()
 {
     // First turns on the player blocker windows, then hides them according to how many players are playing.
-    showPlayerBlockersOnClick();
     ui->playerBlockerA->hide();
 }
 
@@ -98,21 +96,19 @@ void YahtzeeMainWin::playerTurn(int numplayers)
             _activePlayer = PLAYERONE;
 
         if(_activePlayer == PLAYERONE){
+            showPlayerBlockersOnClick();
             ui->playerBlockerA->hide();
-            ui->playerBlockerB->show();
-            ui->playerBlockerC->show();
-            ui->playerBlockerD->show();
         }
         else if(_activePlayer == PLAYERTWO){
-            ui->playerBlockerA->show();
+            showPlayerBlockersOnClick();
             ui->playerBlockerB->hide();
         }
         else if(_activePlayer == PLAYERTHREE){
-            ui->playerBlockerB->show();
+            showPlayerBlockersOnClick();
             ui->playerBlockerC->hide();
         }
         else if(_activePlayer == PLAYERFOUR){
-            ui->playerBlockerC->show();
+            showPlayerBlockersOnClick();
             ui->playerBlockerD->hide();
         }
     }
