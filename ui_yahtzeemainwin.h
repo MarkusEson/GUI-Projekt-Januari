@@ -138,8 +138,9 @@ public:
     {
         if (YahtzeeMainWin->objectName().isEmpty())
             YahtzeeMainWin->setObjectName(QStringLiteral("YahtzeeMainWin"));
-        YahtzeeMainWin->resize(650, 680);
-        YahtzeeMainWin->setMinimumSize(QSize(650, 680));
+        YahtzeeMainWin->resize(650, 665);
+        YahtzeeMainWin->setMinimumSize(QSize(650, 665));
+        YahtzeeMainWin->setMaximumSize(QSize(650, 665));
         YahtzeeMainWin->setStyleSheet(QStringLiteral(""));
         onePlayerButton = new QAction(YahtzeeMainWin);
         onePlayerButton->setObjectName(QStringLiteral("onePlayerButton"));
@@ -153,7 +154,12 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gameBackground = new QGraphicsView(centralWidget);
         gameBackground->setObjectName(QStringLiteral("gameBackground"));
-        gameBackground->setGeometry(QRect(0, 0, 650, 699));
+        gameBackground->setGeometry(QRect(0, 0, 650, 665));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(gameBackground->sizePolicy().hasHeightForWidth());
+        gameBackground->setSizePolicy(sizePolicy);
         gameBackground->setStyleSheet(QStringLiteral("background-image: url(:/new/pictures/YAHTZEE BACKGROUND THREE.png);"));
         gridLayoutWidget_4 = new QWidget(centralWidget);
         gridLayoutWidget_4->setObjectName(QStringLiteral("gridLayoutWidget_4"));
@@ -167,9 +173,6 @@ public:
         A8 = new QPushButton(gridLayoutWidget_4);
         A8->setObjectName(QStringLiteral("A8"));
         A8->setEnabled(false);
-        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(A8->sizePolicy().hasHeightForWidth());
         A8->setSizePolicy(sizePolicy);
         A8->setMinimumSize(QSize(69, 32));
@@ -1002,7 +1005,7 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(dice1Button->sizePolicy().hasHeightForWidth());
         dice1Button->setSizePolicy(sizePolicy1);
-        dice1Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/4dice.png);"));
+        dice1Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/6dice.png);"));
         dice1Button->setCheckable(false);
         dice1Button->setChecked(false);
 
@@ -1012,7 +1015,7 @@ public:
         dice3Button->setObjectName(QStringLiteral("dice3Button"));
         sizePolicy1.setHeightForWidth(dice3Button->sizePolicy().hasHeightForWidth());
         dice3Button->setSizePolicy(sizePolicy1);
-        dice3Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/1dice.png);"));
+        dice3Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/6dice.png);"));
 
         diceButtonLayout->addWidget(dice3Button, 2, 0, 1, 1);
 
@@ -1020,7 +1023,7 @@ public:
         dice2Button->setObjectName(QStringLiteral("dice2Button"));
         sizePolicy1.setHeightForWidth(dice2Button->sizePolicy().hasHeightForWidth());
         dice2Button->setSizePolicy(sizePolicy1);
-        dice2Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/2dice.png);"));
+        dice2Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/6dice.png);"));
 
         diceButtonLayout->addWidget(dice2Button, 1, 0, 1, 1);
 
@@ -1028,7 +1031,7 @@ public:
         dice5Button->setObjectName(QStringLiteral("dice5Button"));
         sizePolicy1.setHeightForWidth(dice5Button->sizePolicy().hasHeightForWidth());
         dice5Button->setSizePolicy(sizePolicy1);
-        dice5Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/3dice.png);"));
+        dice5Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/6dice.png);"));
         dice5Button->setAutoDefault(false);
         dice5Button->setFlat(false);
 
@@ -1038,7 +1041,7 @@ public:
         dice4Button->setObjectName(QStringLiteral("dice4Button"));
         sizePolicy1.setHeightForWidth(dice4Button->sizePolicy().hasHeightForWidth());
         dice4Button->setSizePolicy(sizePolicy1);
-        dice4Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/4dice.png);"));
+        dice4Button->setStyleSheet(QStringLiteral("border-image: url(:/new/pictures/6dice.png);"));
 
         diceButtonLayout->addWidget(dice4Button, 3, 0, 1, 1);
 
@@ -1175,8 +1178,8 @@ public:
         dice5Button->setText(QString());
         dice4Button->setText(QString());
         rollDiceButton->setText(QApplication::translate("YahtzeeMainWin", "Roll", Q_NULLPTR));
-        helpLabel->setText(QApplication::translate("YahtzeeMainWin", "Open Options to start a Game!", Q_NULLPTR));
-        menuOptions->setTitle(QApplication::translate("YahtzeeMainWin", "Options", Q_NULLPTR));
+        helpLabel->setText(QApplication::translate("YahtzeeMainWin", "Press New Game to start playing!", Q_NULLPTR));
+        menuOptions->setTitle(QApplication::translate("YahtzeeMainWin", "New Game", Q_NULLPTR));
     } // retranslateUi
 
 };

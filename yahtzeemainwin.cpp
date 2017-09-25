@@ -85,7 +85,7 @@ void YahtzeeMainWin::displayDiceOnScreen() // Removed rollDice func
     setDieImage(ui->dice3Button, arrayWithDice[2]);
     setDieImage(ui->dice4Button, arrayWithDice[3]);
     setDieImage(ui->dice5Button, arrayWithDice[4]);
-    delete arrayWithDice;
+    //delete arrayWithDice;
 }
 
 void YahtzeeMainWin::playerTurn(int numplayers)
@@ -196,7 +196,6 @@ void YahtzeeMainWin::on_rollDiceButton_clicked() // Added rollDice func
             if(!button->isEnabled())
                 button->setEnabled(true);
     }
-
     _timesRolled++;
 }
 
@@ -205,6 +204,8 @@ void YahtzeeMainWin::on_onePlayerButton_triggered()
     ui->rollDiceButton->setEnabled(true);
     _numOfPlayers = 1;
     chooseAmountOfPlayers();
+    GameBrain::resetScoreBoard();
+    ui->helpLabel->setText("Press New Game to restart!");
 }
 
 void YahtzeeMainWin::on_twoPlayerButton_triggered()
@@ -212,6 +213,8 @@ void YahtzeeMainWin::on_twoPlayerButton_triggered()
     ui->rollDiceButton->setEnabled(true);
     _numOfPlayers = 2;
     chooseAmountOfPlayers();
+    GameBrain::resetScoreBoard();
+    ui->helpLabel->setText("Press New Game to restart!");
 }
 
 void YahtzeeMainWin::on_threePlayerButton_triggered()
@@ -219,6 +222,8 @@ void YahtzeeMainWin::on_threePlayerButton_triggered()
     ui->rollDiceButton->setEnabled(true);
     _numOfPlayers = 3;
     chooseAmountOfPlayers();
+    GameBrain::resetScoreBoard();
+    ui->helpLabel->setText("Press New Game to restart!");
 }
 
 void YahtzeeMainWin::on_fourPlayerButton_triggered()
@@ -226,4 +231,6 @@ void YahtzeeMainWin::on_fourPlayerButton_triggered()
     ui->rollDiceButton->setEnabled(true);
     _numOfPlayers = 4;
     chooseAmountOfPlayers();
+    GameBrain::resetScoreBoard();
+    ui->helpLabel->setText("Press New Game to restart!");
 }

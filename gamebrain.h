@@ -31,16 +31,14 @@ public:
     void rollDice();
     Die *getDiceArray();
     void checkDie(int dieNumber);
-
     void oneToSix();
     void xOfAKind();
     void fullHouse();
     void smallLargeStraight();
-
     QString getScoreFromArray();
     QString calculateScoreBoard(int player, int sumBonusOrTotal);
-
     void resetChecked();
+    void resetScoreBoard();
 
 private:
     Die _diceArray[5];

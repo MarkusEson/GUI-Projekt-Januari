@@ -7,13 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>650</width>
-    <height>680</height>
+    <height>665</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>650</width>
-    <height>680</height>
+    <height>665</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>650</width>
+    <height>665</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -29,8 +35,14 @@
       <x>0</x>
       <y>0</y>
       <width>650</width>
-      <height>699</height>
+      <height>665</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="styleSheet">
      <string notr="true">background-image: url(:/new/pictures/YAHTZEE BACKGROUND THREE.png);</string>
@@ -2350,7 +2362,7 @@ border-bottom-right-radius: 20;</string>
         </sizepolicy>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/new/pictures/4dice.png);</string>
+        <string notr="true">border-image: url(:/new/pictures/6dice.png);</string>
        </property>
        <property name="text">
         <string/>
@@ -2372,7 +2384,7 @@ border-bottom-right-radius: 20;</string>
         </sizepolicy>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/new/pictures/1dice.png);</string>
+        <string notr="true">border-image: url(:/new/pictures/6dice.png);</string>
        </property>
        <property name="text">
         <string/>
@@ -2388,7 +2400,7 @@ border-bottom-right-radius: 20;</string>
         </sizepolicy>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/new/pictures/2dice.png);</string>
+        <string notr="true">border-image: url(:/new/pictures/6dice.png);</string>
        </property>
        <property name="text">
         <string/>
@@ -2404,7 +2416,7 @@ border-bottom-right-radius: 20;</string>
         </sizepolicy>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/new/pictures/3dice.png);</string>
+        <string notr="true">border-image: url(:/new/pictures/6dice.png);</string>
        </property>
        <property name="text">
         <string/>
@@ -2426,7 +2438,7 @@ border-bottom-right-radius: 20;</string>
         </sizepolicy>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/new/pictures/4dice.png);</string>
+        <string notr="true">border-image: url(:/new/pictures/6dice.png);</string>
        </property>
        <property name="text">
         <string/>
@@ -2475,7 +2487,7 @@ border-bottom-right-radius: 20;</string>
      </font>
     </property>
     <property name="text">
-     <string>Open Options to start a Game!</string>
+     <string>Press New Game to start playing!</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -2493,7 +2505,7 @@ border-bottom-right-radius: 20;</string>
    </property>
    <widget class="QMenu" name="menuOptions">
     <property name="title">
-     <string>Options</string>
+     <string>New Game</string>
     </property>
     <addaction name="onePlayerButton"/>
     <addaction name="twoPlayerButton"/>

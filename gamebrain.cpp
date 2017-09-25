@@ -113,6 +113,7 @@ QString GameBrain::getScoreFromArray()
 
 QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
 {
+    /*
     _scoreArray[0][1] = 5;
     _scoreArray[1][1] = 5;
     _scoreArray[2][1] = 2;
@@ -133,6 +134,7 @@ QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
     _scoreArray[3][3] = 10;
     _scoreArray[4][3] = 0;
     _scoreArray[5][3] = 1;
+    */
     /*
      * A function that takes the active player, and on click sums all the players currents points and returns these to be displayed.
      * Calculates the Sum, Bonus, and Total scores.
@@ -170,6 +172,13 @@ void GameBrain::resetChecked()
         if(_diceArray[i].checkIsChecked())
             _diceArray[i].checkDie();
     }
+}
+
+void GameBrain::resetScoreBoard()
+{
+    for(int i = 0; i < 19; i++)
+        for(int j = 0; j < 4; j++)
+            _scoreArray[i][j] = 0;
 }
 
 // ------ Die - koden -----------------
