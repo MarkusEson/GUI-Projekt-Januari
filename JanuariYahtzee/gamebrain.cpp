@@ -2,10 +2,6 @@
 
 GameBrain::GameBrain()
 {
-    for (unsigned int i = 0; i < sizeof(diceArray)/sizeof(diceArray[0]); i++)
-    {
-        diceArray[i] = 6;
-    }
 }
 
 GameBrain::~GameBrain()
@@ -15,22 +11,36 @@ GameBrain::~GameBrain()
 
 void GameBrain::rollDice()
 {
-    for (unsigned int i = 0; i < sizeof(diceArray)/sizeof(diceArray[0]); i++)
+    for (unsigned int i = 0; i < sizeof(_diceArray)/sizeof(_diceArray[0]); i++)
     {
-        diceArray[i] = rand() % 6 + 1;
-        qDebug() << "Dice nr " << (i + 1) << " fick värdet" << diceArray[i];
+        if (!_diceArray[i].checkIsChecked())
+        {
+            _diceArray[i].setValue(rand() % 6 + 1);
+            qDebug() << "Dice nr " << (i + 1) << " fick värdet" << _diceArray[i].getValue();
+        }
+        else
+            qDebug() << "Dice nr " << (i + 1) << " har fortfarande värdet" << _diceArray[i].getValue();
     }
-    std::sort(diceArray, diceArray + 5);
+    std::sort(_diceArray, _diceArray + 5, [](Die & a, Die & b) -> bool { return a.getValue() < b.getValue(); });
     qDebug() << "Sorterat!";
 
+    // Här har vi använt kod inspirerad av https://stackoverflow.com/questions/12823573/c-sorting-class-array
+    // Lambakoden förklarar för sort att objekten ska sorteras efter värdena som returneras från "getValue()"
+    // Tänkte att det var nog bäst att ha lambakod eftersom det bara är i rollDice() den är relevant
 }
 
-int * GameBrain::getDiceArray() // Returns copy of array
+Die * GameBrain::getDiceArray() // Returns copy of array
 {
-    int * pointerToDiceArrayCopy = new int[5];
+    Die * pointerToDiceArrayCopy = new Die[5];
     for (int i = 0; i < 5; i++)
-        pointerToDiceArrayCopy[i] = diceArray[i];
+        pointerToDiceArrayCopy[i] = _diceArray[i];
     return pointerToDiceArrayCopy;
+}
+
+void GameBrain::checkDie(int dieNumber)
+{
+    _diceArray[dieNumber - 1].checkDie();
+    qDebug() << "Tärning nr: " << dieNumber << "blev checkad/avcheckad";
 }
 
 void GameBrain::xOfAKind()
@@ -57,8 +67,6 @@ void GameBrain::oneToSix()
       }
       qDebug() << sum;
 }
-
-
 
 
 void GameBrain::fullHouse()
@@ -157,4 +165,38 @@ QString GameBrain::calculateScoreBoard(int player, int sumBonusOrTotal)
     return scoreToReturn;
 }
 
+// ------ Die - koden -----------------
+
+Die::Die()
+{
+
+}
+
+Die::~Die()
+{
+
+}
+
+void Die::setValue(int newValue)
+{
+    _value = newValue;
+}
+
+int Die::getValue()
+{
+    return _value;
+}
+
+bool Die::checkIsChecked()
+{
+    return _isChecked;
+}
+
+void Die::checkDie()
+{
+    if (_isChecked)
+        _isChecked = false;
+    else
+        _isChecked = true;
+}
 
